@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,7 +17,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<!--
+    <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="Controller" >
+-->
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <HBox prefHeight="620.0" prefWidth="800.0">
          <children>
@@ -29,13 +34,18 @@
                   </Label>
                   <Separator prefWidth="200.0" />
                   <Label text="Select service type" />
-                  <ChoiceBox prefHeight="25.0" prefWidth="203.0" />
+                  <ChoiceBox fx:id="services" prefHeight="25.0" prefWidth="203.0" />
+
+
                   <Label text="Select account type" />
                   <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="357.0" spacing="20.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Checking" />
-                        <RadioButton mnemonicParsing="false" text="Savings" />
-                        <RadioButton mnemonicParsing="false" text="Money Market" />
+                        <RadioButton mnemonicParsing="false" text="Checking">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGroup1" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Savings" toggleGroup="$toggleGroup1" />
+                        <RadioButton mnemonicParsing="false" text="Money Market" toggleGroup="$toggleGroup1" />
                      </children>
                   </HBox>
                   <Label text="Enter your account information" />
