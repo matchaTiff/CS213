@@ -12,7 +12,7 @@ public class Main extends Application {
         Controller controllerInstance = new Controller();
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setController(controllerInstance);
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Transaction Manager");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
