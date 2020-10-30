@@ -80,14 +80,14 @@ public class Controller {
                 amount.setVisible(true);
                 amount.setManaged(true);
                 dateField.setVisible(false);
-                gridToHide.setManaged(false);
+                gridToHide.setManaged(true);
                 choice = 'D';
                 break;
             case "Withdraw funds":
                 amount.setVisible(true);
                 amount.setManaged(true);
                 dateField.setVisible(false);
-                gridToHide.setManaged(false);
+                gridToHide.setManaged(true);
                 choice = 'W';
                 break;
             default:
