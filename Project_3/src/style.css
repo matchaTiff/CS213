@@ -1,15 +1,17 @@
 .text-field {
-    -fx-background-color: white;
-    -fx-border-color : #D7D6DC;
-    -fx-background-insets: -0.2, 1, -1.4, 3;
-    -fx-background-radius: 0;
-    -fx-padding: 4 7 4 15 ;
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+    -fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+}
+.text-field:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
 }
 
-.text-field:focused {
-    -fx-border-color : #D7D6DC;
-    -fx-background-color: white;
-    -fx-background-insets: -0.2, 1, -1.4, 3;
+.button {
     -fx-background-radius: 0;
-    -fx-padding: 4 7 4 15 ;
-} 
+    -fx-background-color: rgb(233, 233, 233);
+}
+.button:hover{
+    -fx-background-color: rgb(255, 255, 255);
+}

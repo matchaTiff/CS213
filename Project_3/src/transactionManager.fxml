@@ -22,35 +22,56 @@
     <HBox xmlns:fx="http://javafx.com/fxml" fx:controller="Controller" >
 -->
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <HBox prefHeight="620.0" prefWidth="800.0">
+      <HBox prefHeight="650.0" prefWidth="800.0">
          <children>
-            <VBox prefHeight="600.0" prefWidth="626.0" spacing="19.0">
+            <VBox prefHeight="600.0" prefWidth="626.0" spacing="20.0">
                <children>
                   <Label text="Transaction Manager">
                      <font>
-                        <Font name="System Bold" size="17.0" />
+                        <Font name="Segoe UI Bold" size="20.0" />
                      </font>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <Label text="Select service type" />
+                  <Label text="Select service type">
+                     <font>
+                        <Font name="Segoe UI Bold" size="13.0" />
+                     </font></Label>
                   <ChoiceBox fx:id="services" onAction="#choicePushed" prefHeight="25.0" prefWidth="203.0" />
 
 
-                  <Label text="Select account type" />
+                  <Label text="Select account type">
+                     <font>
+                        <Font name="Segoe UI Bold" size="13.0" />
+                     </font></Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="357.0" spacing="20.0">
                      <children>
                         <RadioButton fx:id="checkingButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Checking" toggleGroup="$accType">
                            <toggleGroup>
                               <ToggleGroup fx:id="accType" />
-                           </toggleGroup></RadioButton>
-                        <RadioButton fx:id="savingsButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Savings" toggleGroup="$accType" />
-                        <RadioButton fx:id="moneyMarketButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Money Market" toggleGroup="$accType" />
+                           </toggleGroup>
+                           <font>
+                              <Font name="Segoe UI Semibold" size="12.0" />
+                           </font></RadioButton>
+                        <RadioButton fx:id="savingsButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Savings" toggleGroup="$accType">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="12.0" />
+                           </font></RadioButton>
+                        <RadioButton fx:id="moneyMarketButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Money Market" toggleGroup="$accType">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="12.0" />
+                           </font></RadioButton>
                      </children>
                   </HBox>
-                  <CheckBox fx:id="optionCheckBox" mnemonicParsing="false" text="Direct Deposit" />
-                  <Label text="Enter your account information" />
+                  <CheckBox fx:id="optionCheckBox" mnemonicParsing="false" text="Direct Deposit">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="12.0" />
+                     </font></CheckBox>
+                  <Label text="Enter your account information">
+                     <font>
+                        <Font name="Segoe UI Bold" size="13.0" />
+                     </font></Label>
                   <GridPane alignment="CENTER_LEFT" hgap="20.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -60,9 +81,18 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="firstName" onAction="#choicePushed" promptText="First Name" />
-                        <TextField fx:id="lastName" onAction="#choicePushed" promptText="Last Name" GridPane.columnIndex="1" />
+                        <TextField fx:id="firstName" onAction="#choicePushed" promptText="First Name">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                        <TextField fx:id="lastName" onAction="#choicePushed" promptText="Last Name" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="-4.0" />
+                     </VBox.margin>
                   </GridPane>
                   <GridPane fx:id="gridToHide" hgap="20.0">
                     <columnConstraints>
@@ -73,13 +103,25 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="amount" onAction="#choicePushed" promptText="Amount" />
-                        <TextField fx:id="dateField" onAction="#choicePushed" promptText="Date" GridPane.columnIndex="1" />
+                        <TextField fx:id="amount" onAction="#choicePushed" promptText="Amount">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
+                        <TextField fx:id="dateField" onAction="#choicePushed" promptText="Date" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin></TextField>
                      </children>
                   </GridPane>
-                  <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="35.0" prefWidth="109.0" text="Submit" textOverrun="CLIP" />
+                  <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="35.0" prefWidth="109.0" text="Submit" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI Semibold" size="12.0" />
+                     </font></Button>
                   <Separator prefWidth="200.0" />
-                  <Label text="Display accounts" />
+                  <Label text="Display accounts">
+                     <font>
+                        <Font name="Segoe UI Bold" size="13.0" />
+                     </font></Label>
                   <GridPane prefHeight="35.0" prefWidth="373.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -90,9 +132,18 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="109.0" text="List of Accounts" textOverrun="CLIP" />
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1" />
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2" />
+                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="109.0" text="List of Accounts" textOverrun="CLIP">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="12.0" />
+                           </font></Button>
+                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="12.0" />
+                           </font></Button>
+                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="12.0" />
+                           </font></Button>
                      </children>
                   </GridPane>
                </children>

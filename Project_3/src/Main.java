@@ -13,7 +13,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setController(controllerInstance);
         primaryStage.setTitle("Transaction Manager");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 800, 650));
         primaryStage.getScene().getStylesheets().add("style.css");
         primaryStage.show();
     }
