@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -38,9 +39,14 @@ public class Controller {
     private TextField lastName;
     @FXML
     private TextField amount;
+    @FXML
+    private TextField dateField;
 
     @FXML
     private CheckBox optionCheckBox;
+
+    @FXML
+    private GridPane gridToHide;
 
     char choice;
 
@@ -59,21 +65,29 @@ public class Controller {
             case "Open new account":
                 amount.setVisible(true);
                 amount.setManaged(true);
+                dateField.setVisible(true);
+                gridToHide.setManaged(true);
                 choice = 'O';
                 break;
             case "Close existing account":
                 amount.setVisible(false);
                 amount.setManaged(false);
+                dateField.setVisible(false);
+                gridToHide.setManaged(false);
                 choice = 'C';
                 break;
             case "Deposit funds":
                 amount.setVisible(true);
                 amount.setManaged(true);
+                dateField.setVisible(false);
+                gridToHide.setManaged(false);
                 choice = 'D';
                 break;
             case "Withdraw funds":
                 amount.setVisible(true);
                 amount.setManaged(true);
+                dateField.setVisible(false);
+                gridToHide.setManaged(false);
                 choice = 'W';
                 break;
             default:

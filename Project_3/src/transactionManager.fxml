@@ -41,12 +41,12 @@
                   <Label text="Select account type" />
                   <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="357.0" spacing="20.0">
                      <children>
-                        <RadioButton fx:id="checkingButton" onAction="#checkRadioButton" mnemonicParsing="false" text="Checking" toggleGroup="$accType">
+                        <RadioButton fx:id="checkingButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Checking" toggleGroup="$accType">
                            <toggleGroup>
                               <ToggleGroup fx:id="accType" />
                            </toggleGroup></RadioButton>
-                        <RadioButton fx:id="savingsButton" onAction="#checkRadioButton" mnemonicParsing="false" text="Savings" toggleGroup="$accType" />
-                        <RadioButton fx:id="moneyMarketButton" onAction="#checkRadioButton" mnemonicParsing="false" text="Money Market" toggleGroup="$accType" />
+                        <RadioButton fx:id="savingsButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Savings" toggleGroup="$accType" />
+                        <RadioButton fx:id="moneyMarketButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Money Market" toggleGroup="$accType" />
                      </children>
                   </HBox>
                   <CheckBox fx:id="optionCheckBox" mnemonicParsing="false" text="Direct Deposit" />
@@ -64,7 +64,7 @@
                         <TextField fx:id="lastName" onAction="#choicePushed" promptText="Last Name" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <GridPane hgap="20.0">
+                  <GridPane fx:id="gridToHide" hgap="20.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -74,6 +74,7 @@
                     </rowConstraints>
                      <children>
                         <TextField fx:id="amount" onAction="#choicePushed" promptText="Amount" />
+                        <TextField fx:id="dateField" onAction="#choicePushed" promptText="Date" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <Button mnemonicParsing="false" onAction="#submitButton" prefHeight="35.0" prefWidth="109.0" text="Submit" textOverrun="CLIP" />
