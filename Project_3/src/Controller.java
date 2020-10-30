@@ -49,6 +49,11 @@ public class Controller {
     private GridPane gridToHide;
 
     char choice;
+    boolean amountValid = false;
+    double amountAsDouble;
+    String dateAsString;
+    Date dateOpen;
+    char accType;
 
     public void initialize() {
         ps = new PrintStream(new Console(console));
@@ -99,34 +104,46 @@ public class Controller {
 
     public void checkRadioButton() {
         if(checkingButton.isSelected()) {
+            accType = 'C';
             optionCheckBox.setText("Direct Deposit");
             optionCheckBox.setVisible(true);
             optionCheckBox.setManaged(true);
         }
         else if(savingsButton.isSelected()) {
+            accType = 'S';
             optionCheckBox.setText("Loyal Customer");
             optionCheckBox.setVisible(true);
             optionCheckBox.setManaged(true);
         }
         else if(moneyMarketButton.isSelected()) {
+            accType = 'M';
             optionCheckBox.setVisible(false);
             optionCheckBox.setManaged(false);
         }
     }
 
     public void checkTextFields(char choice) {
+
+        try {
+            amountAsDouble = Double.parseDouble(amount.getText());
+        }catch(Exception e){}
         switch(choice) {
             case 'O':
                 if(firstName.getText().equals("") || lastName.getText().equals("") || amount.getText().equals("")) {
-                    System.out.println("Please enter your account information.");
+                    console.appendText("Please enter your account information O.");
                 }
                 else {
                     // check if amount is valid
+                    if(amountAsDouble < 0){
+                        amountValid = false;
+                    }else{
+                        amountValid = true;
+                    }
                 }
                 break;
             case 'C':
                 if(firstName.getText().equals("") || lastName.getText().equals("")) {
-                    System.out.println("Please enter your account information.");
+                    console.appendText("Please enter your account information C.");
                 }
                 else {
                     // idk
@@ -134,46 +151,120 @@ public class Controller {
                 break;
             case 'D':
                 if(firstName.getText().equals("") || lastName.getText().equals("") || amount.getText().equals("")) {
-                    System.out.println("Please enter your account information.");
+                    console.appendText("Please enter your account information D.");
                 }
                 else {
                     // check if amount is valid
+                    if(amountAsDouble < 0){
+                        amountValid = false;
+                    }else{
+                        amountValid = true;
+                    }
                 }
                 break;
             case 'W':
                 if(firstName.getText().equals("") || lastName.getText().equals("") || amount.getText().equals("")) {
-                    System.out.println("Please enter your account information.");
+                    console.appendText("Please enter your account information W.");
                 }
                 else {
                     // check if amount is valid
+                    if(amountAsDouble < 0){
+                        amountValid = false;
+                    }else{
+                        amountValid = true;
+                    }
                 }
                 break;
             default:
                 // code block
         }
+        console.appendText("\n");
+
         if(firstName.getText().equals("")) {
-            System.out.println("blank");
+            console.appendText("Please enter a first name\n");
         }
         else {
-            System.out.println(firstName.getText());
+            console.appendText(firstName.getText() + " ");
         }
         if(lastName.getText().equals("")) {
-            System.out.println("blank");
+            console.appendText("Please enter a last name\n");
         }
         else {
-            System.out.println(lastName.getText());
+            console.appendText(lastName.getText() + " ");
         }
-        if(amount.getText().equals("")) {
-            System.out.println("blank");
+
+        if(choice != 'C') {
+            if (amount.getText().equals("")) {
+                console.appendText("Please enter an amount\n");
+            } else {
+                console.appendText(amount.getText() + " ");
+            }
+
+            if(choice == 'O') {
+                if (dateField.getText().equals("")) {
+                    console.appendText("Please enter a date\n");
+                } else {
+                    console.appendText(dateField.getText());
+                    dateAsString = dateField.getText();
+                }
+            }
         }
-        else {
-            System.out.println(amount.getText());
+
+    }
+
+    public boolean validDate(String date){
+         try{
+            String[] dateElements = date.split("/");
+            dateOpen = new Date(Integer.parseInt(dateElements[0]),
+                                Integer.parseInt(dateElements[1]),
+                                Integer.parseInt(dateElements[2]) );
+         }catch(Exception e){
+             console.appendText("\nPlease enter a valid date");
+             return false;
+         }
+        if( dateOpen.isValid() ){
+            return true;
+        }else{
+            return false;
         }
-        if(dateField.getText().equals("")) {
-            System.out.println("blank");
+    }
+
+    public boolean validInfo(String fName, String lName, String date, boolean amtValid){
+        if(fName.equals("") || lName.equals("")){
+            return false;
         }
-        else {
-            System.out.println(dateField.getText());
+
+        if(!amtValid){
+            return false;
+        }
+
+        if(dateAsString != null){
+            if( validDate(dateAsString) ){
+                return true;
+            }else{
+                console.appendText("\nDate is invalid");
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+    }
+
+    public void createAccount(){
+        Profile holder = new Profile(firstName.getText(), lastName.getText());
+        switch(accType){
+            case 'C':
+                Account checkingAcc = new Checking();
+                break;
+            case 'S':
+                Account savingsAcc = new Savings();
+                break;
+            case 'M':
+                Account moneyMarketAcc = new MoneyMarket();
+                break;
+            default:
+
         }
     }
 
@@ -186,7 +277,20 @@ public class Controller {
         else {
             choicePushed();
             checkTextFields(choice);
+            if( validInfo(firstName.getText(), lastName.getText(), dateAsString, amountValid) ){
+                console.appendText("\nEverything is valid!");
+                switch(choice){
+                    case 'O':
+                        createAccount();
+                        break;
+                }
+
+            }else{
+                console.appendText("\nERROR! Invalid info.\n");
+            }
+
         }
+        console.appendText("\n");
 
     }
 
