@@ -14,6 +14,7 @@ public class Main extends Application {
         fxmlLoader.setController(controllerInstance);
         primaryStage.setTitle("Transaction Manager");
         primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.getScene().getStylesheets().add("style.css");
         primaryStage.show();
     }
 

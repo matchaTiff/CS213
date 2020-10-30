@@ -169,13 +169,24 @@ public class Controller {
         else {
             System.out.println(amount.getText());
         }
+        if(dateField.getText().equals("")) {
+            System.out.println("blank");
+        }
+        else {
+            System.out.println(dateField.getText());
+        }
     }
 
     public void submitButton(ActionEvent event) {
         System.setOut(ps);
         System.setErr(ps);
-        choicePushed();
-        checkTextFields(choice);
+        if(services.getValue() == null) {
+            System.out.println("Please enter service type.");
+        }
+        else {
+            choicePushed();
+            checkTextFields(choice);
+        }
 
     }
 
