@@ -132,15 +132,15 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="109.0" text="List of Accounts" textOverrun="CLIP">
+                        <Button onAction="#listAccountsButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="109.0" text="List of Accounts" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
+                        <Button fx:id="listByDateButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
-                        <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
+                        <Button fx:id="listByLastNameButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>

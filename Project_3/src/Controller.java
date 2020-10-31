@@ -52,6 +52,8 @@ public class Controller {
     boolean accOption = false;
     double amountAsDouble;
     Date dateOpen;
+
+    @FXML
     char accType;
 
     public void initialize() {
@@ -564,6 +566,29 @@ public class Controller {
 
         }
         console.appendText("\n");
+
+    }
+
+    public void listAccountsButton(ActionEvent event){
+        System.setOut(ps);
+        System.setErr(ps);
+        if(accDatabase.getSize() == 0) {
+            console.appendText("Database is empty." + "\n");
+        }
+        else {
+            console.appendText("--Listing accounts in the database--" + "\n");
+            for (int i = 0; i < accDatabase.getSize(); i++) {
+                console.appendText(accDatabase.getAccount(i).toString() + "\n");
+            }
+            console.appendText("--end of listing--" + "\n");
+        }
+    }
+
+    public void listByDateButton(ActionEvent event){
+
+    }
+
+    public void listByLastNameButton(ActionEvent event){
 
     }
 
