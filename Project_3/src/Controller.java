@@ -333,6 +333,7 @@ public class Controller {
                 }
                 Account checkingAcc = new Checking(holder, amountAsDouble, dateOpen, accOption);
                 accDatabase.add(checkingAcc);
+                console.appendText(checkingAcc.toString());
                 break;
             case 'S':
                 if(optionCheckBox.isSelected()) {
@@ -343,10 +344,12 @@ public class Controller {
                 }
                 Account savingsAcc = new Savings(holder, amountAsDouble, dateOpen, accOption);
                 accDatabase.add(savingsAcc);
+                console.appendText(savingsAcc.toString());
                 break;
             case 'M':
                 Account mmAcc = new MoneyMarket(holder, amountAsDouble, dateOpen, 0);
                 accDatabase.add(mmAcc);
+                console.appendText(mmAcc.toString());
                 break;
             default:
 
@@ -355,6 +358,110 @@ public class Controller {
     
     public void closeAccount() {
         
+    }
+
+    public void withdrawAccount() {
+        Profile holder = new Profile(fName, lName);
+        switch (accType) {
+            case 'C':
+                for (int i = 0; i < accDatabase.getSize(); i++) {
+                    // check if its a checking account and holder matches
+                    // 1 = checking account
+                    if (accDatabase.getAccount(i).accType() == 1 
+                    && holder.equals(accDatabase.getAccount(i).getHolder())) {
+                        accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble); // withdraw amount
+                        console.appendText(accDatabase.getAccount(i).toString());
+                        break;
+                    }
+                    if(i + 1 == accDatabase.getSize()) {
+                        console.appendText("Account does not exist.");
+                        break;
+                    }
+                }
+                break;
+            case 'S':
+                for (int i = 0; i < accDatabase.getSize(); i++) {
+                    // 2 = checking account
+                    if (accDatabase.getAccount(i).accType() == 2 
+                    && holder.equals(accDatabase.getAccount(i).getHolder())) {
+                        accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble);
+                        console.appendText(accDatabase.getAccount(i).toString());
+                        break;
+                    }
+                    if(i + 1 == accDatabase.getSize()) {
+                        console.appendText("Account does not exist.");
+                        break;
+                    }
+                }
+                break;
+            case 'M':
+                for (int i = 0; i < accDatabase.getSize(); i++) {
+                    // 3 = checking account
+                    if (accDatabase.getAccount(i).accType() == 3 
+                    && holder.equals(accDatabase.getAccount(i).getHolder())) {
+                        accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble);
+                        console.appendText(accDatabase.getAccount(i).toString());
+                        break;
+                    }
+                    if(i + 1 == accDatabase.getSize()) {
+                        console.appendText("Account does not exist.");
+                        break;
+                    }
+                }
+                break;
+        }
+    }
+
+    public void depositAccount() {
+        Profile holder = new Profile(fName, lName);
+        switch (accType) {
+            case 'C':
+                for (int i = 0; i < accDatabase.getSize(); i++) {
+                    // check if its a checking account and holder matches
+                    // 1 = checking account
+                    if (accDatabase.getAccount(i).accType() == 1 
+                    && holder.equals(accDatabase.getAccount(i).getHolder())) {
+                        accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble);
+                        console.appendText(accDatabase.getAccount(i).toString());
+                        break;
+                    }
+                    if(i + 1 == accDatabase.getSize()) {
+                        console.appendText("Account does not exist.");
+                        break;
+                    }
+                }
+                break;
+            case 'S':
+                for (int i = 0; i < accDatabase.getSize(); i++) {
+                    // 2 = savings account
+                    if (accDatabase.getAccount(i).accType() == 2 
+                    && holder.equals(accDatabase.getAccount(i).getHolder())) {
+                        accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble);
+                        console.appendText(accDatabase.getAccount(i).toString());
+                        break;
+                    }
+                    if(i + 1 == accDatabase.getSize()) {
+                        console.appendText("Account does not exist.");
+                        break;
+                    }
+                }
+                break;
+            case 'M':
+                for (int i = 0; i < accDatabase.getSize(); i++) {
+                    // 3 = savings account
+                    if (accDatabase.getAccount(i).accType() == 3 
+                    && holder.equals(accDatabase.getAccount(i).getHolder())) {
+                        accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble);
+                        console.appendText(accDatabase.getAccount(i).toString());
+                        break;
+                    }
+                    if(i + 1 == accDatabase.getSize()) {
+                        console.appendText("Account does not exist.");
+                        break;
+                    }
+                }
+                break;
+        }
     }
 
     public void submitButton(ActionEvent event) {
@@ -377,6 +484,26 @@ public class Controller {
                     break;
                 case 'C':
                     closeAccount();
+                    break;
+                case 'W':
+                    if(fNameValid == true && lNameValid == true && amountValid == true) {
+                        if(accDatabase.getSize() == 0) {
+                            console.appendText("Account does not exist.");
+                        }
+                        else {
+                            withdrawAccount();
+                        }
+                    }
+                    break;
+                case 'D':
+                    if(fNameValid == true && lNameValid == true && amountValid == true) {
+                        if(accDatabase.getSize() == 0) {
+                            console.appendText("Account does not exist.");
+                        }
+                        else {
+                            depositAccount();
+                        }
+                    }
                     break;
             }
 
