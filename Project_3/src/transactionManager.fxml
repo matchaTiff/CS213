@@ -38,7 +38,7 @@
                      <font>
                         <Font name="Segoe UI Bold" size="13.0" />
                      </font></Label>
-                  <ChoiceBox fx:id="services" onAction="#choicePushed" prefHeight="25.0" prefWidth="203.0" />
+                  <ChoiceBox fx:id="services" onAction="#serviceSelected" prefHeight="25.0" prefWidth="203.0" />
 
 
                   <Label text="Select account type">
@@ -47,18 +47,18 @@
                      </font></Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="357.0" spacing="20.0">
                      <children>
-                        <RadioButton fx:id="checkingButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Checking" toggleGroup="$accType">
+                        <RadioButton fx:id="checkingButton" mnemonicParsing="false" onAction="#accountType" text="Checking" toggleGroup="$accType">
                            <toggleGroup>
                               <ToggleGroup fx:id="accType" />
                            </toggleGroup>
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></RadioButton>
-                        <RadioButton fx:id="savingsButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Savings" toggleGroup="$accType">
+                        <RadioButton fx:id="savingsButton" mnemonicParsing="false" onAction="#accountType" text="Savings" toggleGroup="$accType">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></RadioButton>
-                        <RadioButton fx:id="moneyMarketButton" mnemonicParsing="false" onAction="#checkRadioButton" text="Money Market" toggleGroup="$accType">
+                        <RadioButton fx:id="moneyMarketButton" mnemonicParsing="false" onAction="#accountType" text="Money Market" toggleGroup="$accType">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></RadioButton>
@@ -81,11 +81,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="firstName" onAction="#choicePushed" promptText="First Name">
+                        <TextField fx:id="firstName" promptText="First Name">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin></TextField>
-                        <TextField fx:id="lastName" onAction="#choicePushed" promptText="Last Name" GridPane.columnIndex="1">
+                        <TextField fx:id="lastName" promptText="Last Name" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin></TextField>
@@ -103,11 +103,11 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="amount" onAction="#choicePushed" promptText="Amount">
+                        <TextField fx:id="amount" promptText="Amount">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin></TextField>
-                        <TextField fx:id="dateField" onAction="#choicePushed" promptText="Date" GridPane.columnIndex="1">
+                        <TextField fx:id="dateField" promptText="Date" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin></TextField>
