@@ -10,6 +10,10 @@ public class Date implements Comparable<Date> {
     private int month;
     private int day;
 
+    private int leapYearCriteria1 = 400;
+    private int leapYearCriteria2 = 100;
+    private int leapYearCriteria3 = 4;
+
     /**
      * Default constructor
      */
@@ -98,11 +102,11 @@ public class Date implements Comparable<Date> {
      * @return True or False depending on leap year status
      */
     private boolean isLeapYear() {
-        if( year % 400 == 0){
+        if( year % leapYearCriteria1 == 0){
             return true;
-        }else if( year % 100 == 0 ){
+        }else if( year % leapYearCriteria2 == 0 ){
             return false;
-        }else if( year % 4 == 0 ){
+        }else if( year % leapYearCriteria3 == 0 ){
             return true;
         }else{
             return false;

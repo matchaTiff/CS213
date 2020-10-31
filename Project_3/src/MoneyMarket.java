@@ -44,6 +44,7 @@ public class MoneyMarket extends Account{
      * Calculates the interest earned per month based on current account balance
      * @return interest in dollars the balance has accumulated in the month
      */
+    @Override
     public double monthlyInterest(){
         // Divides interest by 12 so it equally accumulates by month
         double interestByMonth = ANNUAL_INTEREST / 12;
@@ -55,6 +56,7 @@ public class MoneyMarket extends Account{
      * @return Monthly Fee is returned
      *          Returns 0 if account is eligible for fee waiver
      */
+    @Override
     public double monthlyFee() {
         if( withdrawals <= 6 ){
             if( this.getBalance() < MIN_WAIVE_BALANCE ){ // balance below minimum required to waive fee

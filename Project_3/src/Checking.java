@@ -34,6 +34,7 @@ public class Checking extends Account {
      * Calculates the interest by month
      * @return The value credited to the account monthly
      */
+    @Override
     public double monthlyInterest(){
         // Divides interest by 12 so it equally accumulates by month
         double interestByMonth = ANNUAL_INTEREST / 12;
@@ -45,6 +46,7 @@ public class Checking extends Account {
      * @return Monthly Fee is returned
      *         Returns 0 if account is eligible for fee waiver
      */
+    @Override
     public double monthlyFee() {
         if( directDeposit ){ // Fee waived if direct deposit is enabled
             return 0;

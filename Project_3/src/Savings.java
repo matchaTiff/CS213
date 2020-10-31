@@ -45,6 +45,7 @@ public class Savings extends Account {
      * Calculates the interest by month
      * @return The value credited to the account monthly
      */
+    @Override
     public double monthlyInterest(){
         double interestByMonth;
         if( isLoyal ){ // Divides interest by 12 so it equally accumulates by month
@@ -60,6 +61,7 @@ public class Savings extends Account {
      * @return Monthly Fee is returned
      *         Returns 0 if account is eligible for fee waiver
      */
+    @Override
     public double monthlyFee() {
         if(this.getBalance() < MIN_WAIVE_BALANCE){ // Determines if fee is elligible to be waived
             return MONTHLY_FEE;
