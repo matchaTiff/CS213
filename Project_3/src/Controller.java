@@ -3,14 +3,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class Controller {
     @FXML
@@ -39,6 +46,8 @@ public class Controller {
     private CheckBox optionCheckBox;
     @FXML
     private GridPane gridToHide;
+    @FXML
+    private MenuItem file;
 
     private AccountDatabase accDatabase = new AccountDatabase();
 
@@ -52,6 +61,8 @@ public class Controller {
     boolean accOption = false;
     double amountAsDouble;
     Date dateOpen;
+
+    FileChooser fileChooser;
 
     @FXML
     char accType;
@@ -73,6 +84,8 @@ public class Controller {
                 amount.setManaged(true);
                 dateField.setVisible(true);
                 gridToHide.setManaged(true);
+                optionCheckBox.setVisible(true);
+                optionCheckBox.setManaged(true);
                 serviceType = 'O';
                 break;
             case "Close Existing Account":
@@ -80,6 +93,8 @@ public class Controller {
                 amount.setManaged(false);
                 dateField.setVisible(false);
                 gridToHide.setManaged(false);
+                optionCheckBox.setVisible(false);
+                optionCheckBox.setManaged(false);
                 serviceType = 'C';
                 break;
             case "Deposit Funds":
@@ -87,6 +102,8 @@ public class Controller {
                 amount.setManaged(true);
                 dateField.setVisible(false);
                 gridToHide.setManaged(true);
+                optionCheckBox.setVisible(false);
+                optionCheckBox.setManaged(false);
                 serviceType = 'D';
                 break;
             case "Withdraw Funds":
@@ -94,6 +111,8 @@ public class Controller {
                 amount.setManaged(true);
                 dateField.setVisible(false);
                 gridToHide.setManaged(true);
+                optionCheckBox.setVisible(false);
+                optionCheckBox.setManaged(false);
                 serviceType = 'W';
                 break;
             default:
@@ -514,9 +533,18 @@ public class Controller {
         }
     }
 
+    public void importFile() {
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Import text file");
+        fileChooser.setInitialDirectory(new File("."));
+        fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+    }
+
     public void submitButton(ActionEvent event) {
         System.setOut(ps);
         System.setErr(ps);
+        importFile();
         if(services.getValue() == null) {
             console.appendText("Please enter service type.\n");
         }
