@@ -59,7 +59,7 @@
                      </font></Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="357.0" spacing="20.0">
                      <children>
-                        <RadioButton fx:id="checkingButton" mnemonicParsing="false" onAction="#accountType" text="Checking">
+                        <RadioButton fx:id="checkingButton" mnemonicParsing="false" onAction="#accountType" text="Checking" toggleGroup="$group">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font>
@@ -148,11 +148,11 @@
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
-                        <Button fx:id="listByDateButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
+                        <Button onAction="#listByDateButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
-                        <Button fx:id="listByLastNameButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
+                        <Button onAction="#listByLastNameButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
