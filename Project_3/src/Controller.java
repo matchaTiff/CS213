@@ -1,4 +1,5 @@
-import java.io.PrintStream;
+import java.io.*;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -11,9 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
@@ -375,8 +373,12 @@ public class Controller {
                     accOption = false;
                 }
                 Account checkingAcc = new Checking(holder, amountAsDouble, dateOpen, accOption);
-                accDatabase.add(checkingAcc);
-                console.appendText(checkingAcc.toString());
+                if(accDatabase.add(checkingAcc)) {
+                    console.appendText(checkingAcc.toString());
+                    console.appendText("\nAccount opened and added to the database.");
+                }else{
+                    console.appendText("Account is already in database");
+                }
                 break;
             case 'S':
                 if(optionCheckBox.isSelected()) {
@@ -386,13 +388,21 @@ public class Controller {
                     accOption = false;
                 }
                 Account savingsAcc = new Savings(holder, amountAsDouble, dateOpen, accOption);
-                accDatabase.add(savingsAcc);
-                console.appendText(savingsAcc.toString());
+                if(accDatabase.add(savingsAcc)) {
+                    console.appendText(savingsAcc.toString());
+                    console.appendText("\nAccount opened and added to the database.");
+                }else{
+                    console.appendText("Account is already in database");
+                }
                 break;
             case 'M':
                 Account mmAcc = new MoneyMarket(holder, amountAsDouble, dateOpen, 0);
-                accDatabase.add(mmAcc);
-                console.appendText(mmAcc.toString());
+                if(accDatabase.add(mmAcc)) {
+                    console.appendText(mmAcc.toString());
+                    console.appendText("\nAccount opened and added to the database.");
+                }else{
+                    console.appendText("Account is already in database");
+                }
                 break;
             default:
 
@@ -570,12 +580,53 @@ public class Controller {
         }
     }
 
-    public void importFile() {
+    public void importFile() throws Exception {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Import text file");
         fileChooser.setInitialDirectory(new File("."));
         fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.txt"));
         File selectedFile = fileChooser.showOpenDialog(null);
+        BufferedReader br = new BufferedReader( new FileReader(selectedFile) );
+
+        String st;
+        while((st = br.readLine()) != null){
+            String[] accParts = st.split(",");
+            Profile profile = new Profile(accParts[1], accParts[2]);
+            amountAsDouble = Double.parseDouble(accParts[3]);
+            String[] dateParts = accParts[4].split("/");
+            dateOpen = new Date(Integer.parseInt(dateParts[0]),
+                                Integer.parseInt(dateParts[1]),
+                                Integer.parseInt(dateParts[2])
+                                );
+
+
+            switch(accParts[0]){
+                case "C":
+                    if(accParts[5].equals("true")){
+                        Account checkingAcc = new Checking(profile, amountAsDouble, dateOpen, true);
+                        accDatabase.add(checkingAcc);
+                    }else{
+                        Account checkingAcc = new Checking(profile, amountAsDouble, dateOpen, false);
+                        accDatabase.add(checkingAcc);
+                    }
+                    break;
+                case "S":
+                    if(accParts[5].equals("true")){
+                        Account savingsAcc = new Savings(profile, amountAsDouble, dateOpen, true);
+                        accDatabase.add(savingsAcc);
+                    }else{
+                        Account savingsAcc = new Savings(profile, amountAsDouble, dateOpen, false);
+                        accDatabase.add(savingsAcc);
+                    }
+                    break;
+                case "M":
+                    int withdrawals = Integer.parseInt(accParts[5]);
+                    Account moneyMarket = new MoneyMarket(profile, amountAsDouble, dateOpen, withdrawals);
+                    accDatabase.add(moneyMarket);
+                    break;
+            }
+        }
+        console.appendText("Imported File and added accounts");
     }
 
     public void submitButton(ActionEvent event) {
