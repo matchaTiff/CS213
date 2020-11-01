@@ -17,39 +17,35 @@ import java.io.OutputStream;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 
+/**
+ * Class that controls the data flow into the model object and updates the view when
+ * the data changes. Handles the input commands and displays the results on the console.
+ * Performs the necessary transaction based on the user's input.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public class Controller {
-    @FXML
-    private ChoiceBox<String> services;
-    @FXML
-    private Label choiceBoxLabel;
-    @FXML
-    private TextArea console;
-    @FXML
-    private PrintStream ps;
-    @FXML
-    private RadioButton checkingButton;
-    @FXML
-    private RadioButton savingsButton;
-    @FXML
-    private RadioButton moneyMarketButton;
-    @FXML
-    private TextField firstName;
-    @FXML
-    private TextField lastName;
-    @FXML
-    private TextField amount;
-    @FXML
-    private TextField dateField;
-    @FXML
-    private CheckBox optionCheckBox;
-    @FXML
-    private GridPane gridToHide;
-    @FXML
-    private MenuItem file;
+    
+    @FXML private ChoiceBox<String> services;
+    @FXML private Label choiceBoxLabel;
+    @FXML private TextArea console;
+    @FXML private PrintStream ps;
+    @FXML private RadioButton checkingButton;
+    @FXML private RadioButton savingsButton;
+    @FXML private RadioButton moneyMarketButton;
+    @FXML private TextField firstName;
+    @FXML private TextField lastName;
+    @FXML private TextField amount;
+    @FXML private TextField dateField;
+    @FXML private CheckBox optionCheckBox;
+    @FXML private GridPane gridToHide;
+    @FXML private MenuItem file;
 
     private AccountDatabase accDatabase = new AccountDatabase();
 
     char serviceType;
+    char accType;
     String fName;
     String lName;
     boolean fNameValid = false;
@@ -59,12 +55,11 @@ public class Controller {
     boolean accOption = false;
     double amountAsDouble;
     Date dateOpen;
-
     FileChooser fileChooser;
 
-    @FXML
-    char accType;
-
+    /**
+     * Initializes any controls.
+    */
     public void initialize() {
         ps = new PrintStream(new Console(console));
         services.getItems().add("Open New Account");
@@ -75,6 +70,9 @@ public class Controller {
         accountType();
     }
 
+    /**
+     * Checks what service the user has selected and hides the necessary fields.
+    */
     public void serviceSelected() {
         switch(services.getValue()) {
             case "Open New Account":
@@ -120,6 +118,10 @@ public class Controller {
         }
     }
 
+    /**
+     * Checks what account type the user has selected and hides the necessary fields
+     * such as the Direct Deposit or Loyal Customer checkbox.
+    */
     public void accountType() {
         if(checkingButton.isSelected()) {
             accType = 'C';
@@ -140,6 +142,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Error check text fields and assigns the fields valid or not valid for each service type.
+     * Appends the nessecary print statements.
+     * @param serviceType type of service user selected 
+    */
     public void checkTextFields(char serviceType) {
         switch(serviceType) {
             case 'O':
@@ -300,6 +307,12 @@ public class Controller {
         }
     }
 
+    /**
+     * Check if the balance amount is valid or not.
+     * 
+     * @param str containing the amount as a string
+     * @return true if string can be parsed as a double and not negative, false otherwise
+    */
     public boolean amountIsValid(String str) {
         if(isDouble(str)) {
             amountAsDouble = Double.parseDouble(str);
@@ -323,6 +336,12 @@ public class Controller {
         return dateOpen;
     }
 
+    /**
+     * Determines if the Day, Month, and Year the account was opened is a valid date
+     * @param date the date as a string
+     * @return True if the date is valid
+     *         False if the date is invalid
+     */
     public boolean validDate(String date){
          try{
             String[] dateElements = date.split("/");
@@ -340,6 +359,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Open a new checking account (C)
+     * Open a savings account (S)
+     * Open a money market (M) account
+    */
     public void createAccount(){
         Profile holder = new Profile(fName, lName);
         switch(accType){
@@ -375,6 +399,11 @@ public class Controller {
         }
     }
     
+    /**
+     * Close checking account (C)
+     * Close savings account (S)
+     * Close money market account (M)
+    */
     public void closeAccount() {
         Profile holder = new Profile(fName, lName);
         switch (accType) {
@@ -427,6 +456,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Withdraw from checking account (C)
+     * Withdraw from savings account (S)
+     * Withdraw from money market account (M)
+    */
     public void withdrawAccount() {
         Profile holder = new Profile(fName, lName);
         switch (accType) {
@@ -479,6 +513,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Deposit into checking account (C)
+     * Deposit into savings account (S)
+     * Deposit into money market account (M)
+    */
     public void depositAccount() {
         Profile holder = new Profile(fName, lName);
         switch (accType) {
@@ -542,7 +581,6 @@ public class Controller {
     public void submitButton(ActionEvent event) {
         System.setOut(ps);
         System.setErr(ps);
-        importFile();
         if(services.getValue() == null) {
             console.appendText("Please enter service type.\n");
         }

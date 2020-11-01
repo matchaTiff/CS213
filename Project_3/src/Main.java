@@ -4,6 +4,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * The main class sets up the application by connecting the FXML file
+ * and the Controller class. Launches the scene for the application
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public class Main extends Application {
 
     @Override
