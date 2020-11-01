@@ -57,7 +57,7 @@ public class AccountDatabase {
      */
     public boolean add(Account account) {
         if( find(account) != -1 ){ //Check if account exists
-            System.out.println("Account is already in the database.");
+            //System.out.println("Account is already in the database.");
             return false; // Account exists already
         }
 
@@ -66,7 +66,7 @@ public class AccountDatabase {
             grow();
         }
         accounts[lastAccount] = account;
-        System.out.println("Account opened and added to the database.");
+        //System.out.println("Account opened and added to the database.");
         size++; // increase counter for number of accountsin the database
         return true;
     }
