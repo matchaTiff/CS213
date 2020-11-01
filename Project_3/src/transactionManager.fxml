@@ -31,7 +31,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem fx:id="file" mnemonicParsing="false" text="Import" onAction="#importFile"/>
+              <MenuItem fx:id="file" mnemonicParsing="false" onAction="#importFile" text="Import File" />
+                  <MenuItem mnemonicParsing="false" text="Export File" />
             </items>
           </Menu>
         </menus>
@@ -148,11 +149,11 @@
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
-                        <Button onAction="#listByDateButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#listByDateButton" prefHeight="39.0" prefWidth="109.0" text="By Date" textOverrun="CLIP" GridPane.columnIndex="1">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>
-                        <Button onAction="#listByLastNameButton" mnemonicParsing="false" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
+                        <Button mnemonicParsing="false" onAction="#listByLastNameButton" prefHeight="39.0" prefWidth="109.0" text="By Last Name" textOverrun="CLIP" GridPane.columnIndex="2">
                            <font>
                               <Font name="Segoe UI Semibold" size="12.0" />
                            </font></Button>

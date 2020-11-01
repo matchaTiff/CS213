@@ -322,7 +322,7 @@ public class TransactionManager {
      * sorted by the dates opened in ascending order
      * 
      * (PN) Calculate the monthly interests and fees, and print the account statements, 
-     * sorted by the dates opened in ascending order
+     * sorted by last name opened in ascending order
      * 
      * @param line array of tokens from the command line the user has inputted
     */

@@ -580,6 +580,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Takes in a text file and imports the data into the database.
+     * Data tokens in the text files delimited by the commas (,).
+     * @throws Exception
+     */
     public void importFile() throws Exception {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Import text file");
@@ -598,8 +603,6 @@ public class Controller {
                                 Integer.parseInt(dateParts[1]),
                                 Integer.parseInt(dateParts[2])
                                 );
-
-
             switch(accParts[0]){
                 case "C":
                     if(accParts[5].equals("true")){
@@ -626,9 +629,13 @@ public class Controller {
                     break;
             }
         }
-        console.appendText("Imported File and added accounts");
+        console.appendText("Imported File and added accounts\n");
     }
 
+    /**
+     * Performs coresponding service types when the submit button is pressed.
+     * @param event
+     */
     public void submitButton(ActionEvent event) {
         System.setOut(ps);
         System.setErr(ps);
@@ -684,7 +691,10 @@ public class Controller {
 
     }
 
-    public void listAccountsButton(ActionEvent event) {
+    /**
+     * Print the list of accounts in the database
+    */
+    public void listAccountsButton() {
         System.setOut(ps);
         System.setErr(ps);
         if (accDatabase.getSize() == 0) {
@@ -698,15 +708,21 @@ public class Controller {
         }
     }
 
-
-
-    public void listByDateButton(ActionEvent event){
+    /**
+     * Calculate the monthly interests and fees, and print the account statements, 
+     * sorted by the dates opened in ascending order
+     */
+    public void listByDateButton(){
         System.setOut(ps);
         System.setErr(ps);
         console.appendText(accDatabase.printByDateOpen());
     }
 
-    public void listByLastNameButton(ActionEvent event){
+    /**
+     * Calculate the monthly interests and fees, and print the account statements, 
+     * sorted by last name opened in ascending order
+     */
+    public void listByLastNameButton(){
         System.setOut(ps);
         System.setErr(ps);
         console.appendText(accDatabase.printByLastName());
