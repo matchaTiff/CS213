@@ -174,47 +174,52 @@ public class AccountDatabase {
     /**
      * Print out the database sorted by date open.
      */
-    public void printByDateOpen() {
+    public String printByDateOpen() {
         sortByDateOpen();
         DecimalFormat df = new DecimalFormat("#0.00");
+        String sortedDateString = "";
         if(size == 0) {
-            System.out.println("Database is empty.");
+            return ("Database is empty.\n");
         }
         else {
-            System.out.println("--Printing statements by date opened--");
+            sortedDateString += ("--Printing statements by last name--\n");
             for (int i = 0; i < size; i++) {
-                System.out.println(accounts[i].toString());
-                System.out.println("-interest: $" + df.format(accounts[i].monthlyInterest()));
+                sortedDateString += (accounts[i].toString());
+                sortedDateString += ("-interest: $" + df.format(accounts[i].monthlyInterest()) + "\n");
                 accounts[i].credit(accounts[i].monthlyInterest());
-                System.out.println("-fee: $" + df.format(accounts[i].monthlyFee()));
+                sortedDateString += ("-fee: $" + df.format(accounts[i].monthlyFee()) + "\n");
                 accounts[i].debit(accounts[i].monthlyFee());
-                System.out.println("-new balance: $" + df.format(accounts[i].getBalance()));
+                sortedDateString += ("-new balance: $" + df.format(accounts[i].getBalance()) + "\n");
             }
-            System.out.println("--end of listing--");
+            sortedDateString += ("--end of listing--\n");
         }
+        return sortedDateString;
     }
 
     /**
      * Print out the database sorted by last name.
+     * @return
      */
-    public void printByLastName() {
+    public String printByLastName() {
         sortByLastName();
         DecimalFormat df = new DecimalFormat("#0.00");
+        String sortedLastNameString = "";
         if(size == 0) {
-            System.out.println("Database is empty.");
+            return ("Database is empty.\n");
         }
         else {
-            System.out.println("--Printing statements by last name--");
+            sortedLastNameString += ("--Printing statements by last name--\n");
             for (int i = 0; i < size; i++) {
-                System.out.println(accounts[i].toString());
-                System.out.println("-interest: $" + df.format(accounts[i].monthlyInterest()));
+                sortedLastNameString += (accounts[i].toString());
+                sortedLastNameString += ("-interest: $" + df.format(accounts[i].monthlyInterest()) + "\n");
                 accounts[i].credit(accounts[i].monthlyInterest());
-                System.out.println("-fee: $" + df.format(accounts[i].monthlyFee()));
+                sortedLastNameString += ("-fee: $" + df.format(accounts[i].monthlyFee()) + "\n");
                 accounts[i].debit(accounts[i].monthlyFee());
-                System.out.println("-new balance: $" + df.format(accounts[i].getBalance()));
+                sortedLastNameString += ("-new balance: $" + df.format(accounts[i].getBalance()) + "\n");
             }
-            System.out.println("--end of listing--");
+            sortedLastNameString += ("--end of listing--\n");
         }
+        return sortedLastNameString;
     }
 
     /**
