@@ -7,7 +7,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -17,7 +16,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class Controller {
     @FXML
@@ -597,13 +595,12 @@ public class Controller {
 
     }
 
-    public void listAccountsButton(ActionEvent event){
+    public void listAccountsButton(ActionEvent event) {
         System.setOut(ps);
         System.setErr(ps);
-        if(accDatabase.getSize() == 0) {
+        if (accDatabase.getSize() == 0) {
             console.appendText("Database is empty." + "\n");
-        }
-        else {
+        } else {
             console.appendText("--Listing accounts in the database--" + "\n");
             for (int i = 0; i < accDatabase.getSize(); i++) {
                 console.appendText(accDatabase.getAccount(i).toString() + "\n");
@@ -612,12 +609,18 @@ public class Controller {
         }
     }
 
-    public void listByDateButton(ActionEvent event){
 
+
+    public void listByDateButton(ActionEvent event){
+        System.setOut(ps);
+        System.setErr(ps);
+        console.appendText(accDatabase.printByDateOpen());
     }
 
     public void listByLastNameButton(ActionEvent event){
-
+        System.setOut(ps);
+        System.setErr(ps);
+        console.appendText(accDatabase.printByLastName());
     }
 
     public class Console extends OutputStream {
