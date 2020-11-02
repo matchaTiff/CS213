@@ -1,19 +1,16 @@
 import java.io.*;
-
+import java.text.DecimalFormat;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 
 /**
  * Class that controls the data flow into the model object and updates the view when
@@ -38,7 +35,6 @@ public class Controller {
     @FXML private TextField dateField;
     @FXML private CheckBox optionCheckBox;
     @FXML private GridPane gridToHide;
-    @FXML private MenuItem file;
 
     private AccountDatabase accDatabase = new AccountDatabase();
 
@@ -326,6 +322,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Changes a string date into a Date object
+     * @param date the date as a string
+     * @return a Date object
+     */
     public Date toDate(String date) {
         String[] dateElements = date.split("/");
         dateOpen = new Date(Integer.parseInt(dateElements[0]),
@@ -480,8 +481,12 @@ public class Controller {
                     // 1 = checking account
                     if (accDatabase.getAccount(i).accType() == 1 
                     && holder.equals(accDatabase.getAccount(i).getHolder())) {
-                        accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble); // withdraw amount
-                        console.appendText(accDatabase.getAccount(i).toString());
+                        if(accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble) == 0) { // withdraw amount
+                            console.appendText(amountAsDouble + " withdrawn from account.\n");
+                        }
+                        else if(accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble) == 1) {
+                            console.appendText("Insufficient funds.\n");
+                        }
                         break;
                     }
                     if(i + 1 == accDatabase.getSize()) {
@@ -495,8 +500,12 @@ public class Controller {
                     // 2 = checking account
                     if (accDatabase.getAccount(i).accType() == 2 
                     && holder.equals(accDatabase.getAccount(i).getHolder())) {
-                        accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble);
-                        console.appendText(accDatabase.getAccount(i).toString());
+                        if(accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble) == 0) { // withdraw amount
+                            console.appendText(amountAsDouble + " withdrawn from account.\n");
+                        }
+                        else if(accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble) == 1) {
+                            console.appendText("Insufficient funds.\n");
+                        }
                         break;
                     }
                     if(i + 1 == accDatabase.getSize()) {
@@ -510,8 +519,12 @@ public class Controller {
                     // 3 = checking account
                     if (accDatabase.getAccount(i).accType() == 3 
                     && holder.equals(accDatabase.getAccount(i).getHolder())) {
-                        accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble);
-                        console.appendText(accDatabase.getAccount(i).toString());
+                        if(accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble) == 0) { // withdraw amount
+                            console.appendText(amountAsDouble + " withdrawn from account.\n");
+                        }
+                        else if(accDatabase.withdrawal(accDatabase.getAccount(i), amountAsDouble) == 1) {
+                            console.appendText("Insufficient funds.\n");
+                        }
                         break;
                     }
                     if(i + 1 == accDatabase.getSize()) {
@@ -537,8 +550,9 @@ public class Controller {
                     // 1 = checking account
                     if (accDatabase.getAccount(i).accType() == 1 
                     && holder.equals(accDatabase.getAccount(i).getHolder())) {
-                        accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble);
-                        console.appendText(accDatabase.getAccount(i).toString());
+                        if(accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble)) {
+                            console.appendText(amountAsDouble + " deposited to account.");
+                        }
                         break;
                     }
                     if(i + 1 == accDatabase.getSize()) {
@@ -552,8 +566,9 @@ public class Controller {
                     // 2 = savings account
                     if (accDatabase.getAccount(i).accType() == 2 
                     && holder.equals(accDatabase.getAccount(i).getHolder())) {
-                        accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble);
-                        console.appendText(accDatabase.getAccount(i).toString());
+                        if(accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble)) {
+                            console.appendText(amountAsDouble + " deposited to account.");
+                        }
                         break;
                     }
                     if(i + 1 == accDatabase.getSize()) {
@@ -567,8 +582,9 @@ public class Controller {
                     // 3 = savings account
                     if (accDatabase.getAccount(i).accType() == 3 
                     && holder.equals(accDatabase.getAccount(i).getHolder())) {
-                        accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble);
-                        console.appendText(accDatabase.getAccount(i).toString());
+                        if(accDatabase.deposit(accDatabase.getAccount(i), amountAsDouble)) {
+                            console.appendText(amountAsDouble + " deposited to account.");
+                        }
                         break;
                     }
                     if(i + 1 == accDatabase.getSize()) {
@@ -585,7 +601,7 @@ public class Controller {
      * Data tokens in the text files delimited by the commas (,).
      * @throws Exception
      */
-    public void importFile() throws Exception {
+    public void importFile() throws FileNotFoundException {
         fileChooser = new FileChooser();
         fileChooser.setTitle("Import text file");
         fileChooser.setInitialDirectory(new File("."));
@@ -633,10 +649,72 @@ public class Controller {
     }
 
     /**
+     * Takes account database and exports it into a text file.
+     * @throws FileNotFoundException
+     */
+    public void exportFile() throws FileNotFoundException {
+        try (PrintWriter out = new PrintWriter("Database.txt")) {
+            if(accDatabase.getSize() == 0) {
+                console.appendText("Database is empty.\n");
+            }
+            else {
+                DecimalFormat df = new DecimalFormat("#0.00");
+                for(int i = 0; i < accDatabase.getSize(); i++) {
+                    Account currentAcc = accDatabase.getAccount(i);
+                    switch(currentAcc.accType()) {
+                        case 1: // checking account type
+                            Checking currentAccChecking = (Checking) currentAcc;
+                            if(currentAccChecking.getIsDirectDeposit()) {
+                                out.println("C" + "," + currentAcc.getHolder().getFirstName() + "," 
+                                + currentAcc.getHolder().getLastName() + "," + df.format(currentAcc.getBalance()) 
+                                + "," + currentAcc.getDate().toString() + ","
+                                + "true");
+                            }
+                            else {
+                                out.println("C" + "," + currentAcc.getHolder().getFirstName() + "," 
+                                + currentAcc.getHolder().getLastName() + "," + df.format(currentAcc.getBalance()) 
+                                + "," + currentAcc.getDate().toString() + ","
+                                + "false");
+                            }
+                            break;
+                        case 2:
+                            Savings currentAccSavings = (Savings) currentAcc;
+                            if(currentAccSavings.getIsLoyal()) {
+                                out.println("S" + "," + currentAcc.getHolder().getFirstName() + "," 
+                                + currentAcc.getHolder().getLastName() + "," + df.format(currentAcc.getBalance()) 
+                                + "," + currentAcc.getDate().toString() + ","
+                                + "true");
+                            }
+                            else {
+                                out.println("S" + "," + currentAcc.getHolder().getFirstName() + "," 
+                                + currentAcc.getHolder().getLastName() + "," + df.format(currentAcc.getBalance()) 
+                                + "," + currentAcc.getDate().toString() + ","
+                                + "false");
+                            }
+                            break;
+                        case 3:
+                            MoneyMarket currentAccMM = (MoneyMarket) currentAcc;
+                            out.println("M" + "," + currentAcc.getHolder().getFirstName() + "," 
+                                + currentAcc.getHolder().getLastName() + "," + df.format(currentAcc.getBalance()) 
+                                + "," + currentAcc.getDate().toString() + ","
+                                + currentAccMM.getWithdrawals());
+                            break;
+                    }
+                }
+                console.appendText("Database has been exported.\n");
+            }
+            out.close();
+        } catch (FileNotFoundException e) {
+            console.appendText("File doesn't exist\n");
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Performs coresponding service types when the submit button is pressed.
      * @param event
      */
-    public void submitButton(ActionEvent event) {
+    public void submitButton() {
         System.setOut(ps);
         System.setErr(ps);
         if(services.getValue() == null) {
