@@ -733,7 +733,6 @@ public class Controller {
 
     /**
      * Performs coresponding service types when the submit button is pressed.
-     * @param event
      */
     public void submitButton() {
         System.setOut(ps);
