@@ -57,7 +57,6 @@ public class AccountDatabase {
      */
     public boolean add(Account account) {
         if( find(account) != -1 ){ //Check if account exists
-            //System.out.println("Account is already in the database.");
             return false; // Account exists already
         }
 
@@ -66,7 +65,6 @@ public class AccountDatabase {
             grow();
         }
         accounts[lastAccount] = account;
-        //System.out.println("Account opened and added to the database.");
         size++; // increase counter for number of accountsin the database
         return true;
     }
@@ -80,7 +78,6 @@ public class AccountDatabase {
     public boolean remove(Account account) {
         int accountIndex = find(account);
         if( accountIndex == -1 ){ // account doesnt exist
-            //System.out.println("Account does not exist.");
             return false;
         }
 
@@ -88,7 +85,6 @@ public class AccountDatabase {
         accounts[accountIndex] = accounts[lastAccount];
         accounts[lastAccount] = null;
         size--;
-        //System.out.println("Account closed and removed from the database.");
         return true;
     } //return false if account doesn’t exist
 
@@ -101,12 +97,10 @@ public class AccountDatabase {
      */
     public boolean deposit(Account account, double amount) {
         if( find(account) == -1 ){ //Check if account exists
-            //System.out.println("Account does not exist.");
             return false; // Account does not exist so cannot add
         }
 
         account.credit(amount);
-        //System.out.println(amount + " deposited to account.");
         return true;
     }
 
@@ -120,16 +114,13 @@ public class AccountDatabase {
      */
     public int withdrawal(Account account, double amount) {
         if( find(account) == -1 ) { //Check if account exists
-            //System.out.println("Account does not exist.");
             return -1;
         }
 
         if( account.getBalance() >= amount ){ // Withdrawl successful
             account.debit(amount);
-            //System.out.println(amount + " withdrawn from account.");
             return 0;
         }else{ // insufficient funds
-            //System.out.println("Insufficient funds.");
             return 1;
         }
     }
@@ -221,22 +212,6 @@ public class AccountDatabase {
             sortedLastNameString += ("--end of listing--\n");
         }
         return sortedLastNameString;
-    }
-
-    /**
-     * Prints all the accounts in the account database
-     */
-    public void printAccounts() {
-        if(size == 0) {
-            //System.out.println("Database is empty.");
-        }
-        else {
-            //System.out.println("--Listing accounts in the database--");
-            for (int i = 0; i < size; i++) {
-                //System.out.println(accounts[i].toString());
-            }
-            //System.out.println("--end of listing--");
-        }
     }
 
     /**
