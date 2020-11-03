@@ -597,6 +597,20 @@ public class Controller {
     }
 
     /**
+     * Checks to see if input line in a file is valid.
+     * 
+     * @param line array of tokens from the file line
+    */
+    public int checkInput(String[] line) {
+        if(line[0].equals("C") || line[0].equals("S") || line[0].equals("M") ) { // checking account
+            if(line.length == 6) { // check if input line is the right size
+                return 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
      * Takes in a text file and imports the data into the database.
      * Data tokens in the text files delimited by the commas (,).
      * @throws Exception
@@ -610,42 +624,49 @@ public class Controller {
         BufferedReader br = new BufferedReader( new FileReader(selectedFile) );
 
         String st;
-        while((st = br.readLine()) != null){
-            String[] accParts = st.split(",");
-            Profile profile = new Profile(accParts[1], accParts[2]);
-            amountAsDouble = Double.parseDouble(accParts[3]);
-            String[] dateParts = accParts[4].split("/");
-            dateOpen = new Date(Integer.parseInt(dateParts[0]),
-                                Integer.parseInt(dateParts[1]),
-                                Integer.parseInt(dateParts[2])
-                                );
-            switch(accParts[0]){
-                case "C":
-                    if(accParts[5].equals("true")){
-                        Account checkingAcc = new Checking(profile, amountAsDouble, dateOpen, true);
-                        accDatabase.add(checkingAcc);
-                    }else{
-                        Account checkingAcc = new Checking(profile, amountAsDouble, dateOpen, false);
-                        accDatabase.add(checkingAcc);
+        try {
+            while((st = br.readLine()) != null) {
+                if(checkInput(st.split(",")) == 1) {
+                    String[] accParts = st.split(",");
+                    Profile profile = new Profile(accParts[1], accParts[2]);
+                    amountAsDouble = Double.parseDouble(accParts[3]);
+                    String[] dateParts = accParts[4].split("/");
+                    dateOpen = new Date(Integer.parseInt(dateParts[0]),
+                                        Integer.parseInt(dateParts[1]),
+                                        Integer.parseInt(dateParts[2])
+                                        );
+                    switch(accParts[0]){
+                        case "C":
+                            if(accParts[5].equals("true")){
+                                Account checkingAcc = new Checking(profile, amountAsDouble, dateOpen, true);
+                                accDatabase.add(checkingAcc);
+                            }else{
+                                Account checkingAcc = new Checking(profile, amountAsDouble, dateOpen, false);
+                                accDatabase.add(checkingAcc);
+                            }
+                            break;
+                        case "S":
+                            if(accParts[5].equals("true")){
+                                Account savingsAcc = new Savings(profile, amountAsDouble, dateOpen, true);
+                                accDatabase.add(savingsAcc);
+                            }else{
+                                Account savingsAcc = new Savings(profile, amountAsDouble, dateOpen, false);
+                                accDatabase.add(savingsAcc);
+                            }
+                            break;
+                        case "M":
+                            int withdrawals = Integer.parseInt(accParts[5]);
+                            Account moneyMarket = new MoneyMarket(profile, amountAsDouble, dateOpen, withdrawals);
+                            accDatabase.add(moneyMarket);
+                            break;
                     }
-                    break;
-                case "S":
-                    if(accParts[5].equals("true")){
-                        Account savingsAcc = new Savings(profile, amountAsDouble, dateOpen, true);
-                        accDatabase.add(savingsAcc);
-                    }else{
-                        Account savingsAcc = new Savings(profile, amountAsDouble, dateOpen, false);
-                        accDatabase.add(savingsAcc);
-                    }
-                    break;
-                case "M":
-                    int withdrawals = Integer.parseInt(accParts[5]);
-                    Account moneyMarket = new MoneyMarket(profile, amountAsDouble, dateOpen, withdrawals);
-                    accDatabase.add(moneyMarket);
-                    break;
+                }
             }
         }
-        console.appendText("Imported File and added accounts\n");
+        catch (IOException e) {
+            console.appendText("An error has occurred.\n");
+        }
+        console.appendText("Imported File.\n");
     }
 
     /**
@@ -806,17 +827,30 @@ public class Controller {
         console.appendText(accDatabase.printByLastName());
     }
 
+    /**
+     * Represents a console viewable through a TextArea.
+     */
     public class Console extends OutputStream {
         private TextArea console;
 
+        /**
+         * Creates a console context.
+         * @param console
+         *      The text area to output the consoles text.
+         */
         public Console(TextArea console) {
             this.console = console;
         }
 
+        /**
+         * Appends text data to the text area.
+         * @param valueOf the string to be appended to the text area
+         */
         public void appendText(String valueOf) {
             Platform.runLater(() -> console.appendText(valueOf));
         }
 
+        @Override
         public void write(int b) throws IOException {
             appendText(String.valueOf((char)b));
         }
