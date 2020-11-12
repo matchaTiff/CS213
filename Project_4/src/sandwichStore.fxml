@@ -44,7 +44,7 @@
                   </VBox>
                   <ImageView fitHeight="217.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Downloads/png-transparent-chicken-sandwich-mcchicken-veggie-burger-hamburger-whopper-grilled-fish-food-animals-recipe.png" />
+                        <Image url="chicken_sandwich.png" />
                      </image>
                   </ImageView>
                </children>
