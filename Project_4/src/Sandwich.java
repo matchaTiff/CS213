@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Sandwich implements Customizable {
     static final int MAX_EXTRAS = 6;
     static final double PER_EXTRA = 1.99;
@@ -19,12 +21,12 @@ public abstract class Sandwich implements Customizable {
     public abstract double price();
 
     /**
-     * tostring
-     * @return string
+     * Outputs the extra ingredients of the sandwich if any
+     * @return string of extra ingredients
      */
     @Override
     public String toString() {
-
+        // print out extra ingredients
     }
     
 }

@@ -33,11 +33,10 @@ public class Controller {
             ingredients.setText("Lettuce, tomato, fried chicken, mayo");
         }else if( sandwichChoices.getValue().equals("Beef Sandwich") ){
             sandwichImage.setImage(new Image("beef_sandwich.png"));
-            ingredients.setText("BEEF INGREDIENTS");
+            ingredients.setText("Beef, cheese, tomato, lettuce");
         }else{
             sandwichImage.setImage(new Image("fish_sandwich.png"));
-            ingredients.setText("FISH INGREDIENTS");
+            ingredients.setText("Fried fish fillet, lettuce, tartar sauce");
         }
     }
-
 }

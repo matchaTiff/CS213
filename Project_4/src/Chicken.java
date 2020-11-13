@@ -7,6 +7,15 @@ public class Chicken extends Sandwich{
      */
     @Override
     public double price() {
-        return 10;
+        return 0;
+    }
+
+    /**
+     * Formats the output of the sandwich details
+     * @return Type of sandwich, its ingredients, and the price
+     */
+    @Override
+    public String toString() {
+        
     }
 }
