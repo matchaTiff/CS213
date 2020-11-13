@@ -58,14 +58,14 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <ListView prefHeight="266.0" prefWidth="190.0" />
+                        <ListView fx:id="extraIngredients" prefHeight="266.0" prefWidth="190.0" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="253.0" prefWidth="160.0" spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="313.0" text="Add &gt;&gt;" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" text="&lt;&lt; Remove" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="260.0" text="Clear Selected" />
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="313.0" text="Add &gt;&gt;" />
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="163.0" text="&lt;&lt; Remove" />
+                        <Button fx:id="clearButton" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="260.0" text="Clear Selected" />
                      </children>
                      <padding>
                         <Insets left="20.0" right="20.0" top="40.0" />
@@ -78,7 +78,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <ListView prefHeight="283.0" prefWidth="119.0" />
+                        <ListView fx:id="selectedIngredients" prefHeight="283.0" prefWidth="119.0" />
                      </children>
                   </VBox>
                </children>
