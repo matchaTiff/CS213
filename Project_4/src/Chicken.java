@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 
-public class Chicken extends Sandwich {
-    private static final double INIT_PRICE = 8.99;
+public class Chicken extends Sandwich{
+
+    private final double initSandwichPrice = 8.99;
 
     /**
      * Default constructor
      */
-    public Chicken() {
+    public Chicken(){
         super();
         extras = new ArrayList<Extra>();
     }
@@ -16,8 +17,22 @@ public class Chicken extends Sandwich {
      * @return the price for the chicken sandwich
      */
     @Override
-	public double price() {
-		return INIT_PRICE + (extras.size() * PER_EXTRA);
+    public double price() {
+        return PER_EXTRA * extras.size() + initSandwichPrice;
+    }
+
+    @Override
+    public boolean add(Object obj) {
+        Extra ingredient = (Extra) obj;
+        extras.add(ingredient);
+        return true;
+    }
+
+    @Override
+    public boolean remove(Object obj) {
+        Extra ingredient = (Extra) obj;
+        extras.remove(ingredient);
+        return true;
     }
 
     /**

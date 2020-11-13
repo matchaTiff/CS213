@@ -11,7 +11,13 @@ public abstract class Sandwich implements Customizable {
      */
     @Override
     public boolean add(Object obj) {
-
+        if( extras.size() < MAX_EXTRAS ) {
+            Extra ingredient = (Extra) obj;
+            extras.add(ingredient);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -20,7 +26,9 @@ public abstract class Sandwich implements Customizable {
      */
     @Override
     public boolean remove(Object obj) {
-
+        Extra ingredient = (Extra) obj;
+        extras.remove(ingredient);
+        return true;
     }
 
     /**
@@ -36,6 +44,7 @@ public abstract class Sandwich implements Customizable {
     @Override
     public String toString() {
         // print out extra ingredients
+        return null;
     }
     
 }

@@ -1,12 +1,13 @@
 import java.util.ArrayList;
 
 public class Fish extends Sandwich {
-    private static final double INIT_PRICE = 12.99;
+
+    private final double initSandwichPrice = 12.99;
 
     /**
      * Default constructor
      */
-    public Fish() {
+    public Fish(){
         super();
         extras = new ArrayList<Extra>();
     }
@@ -17,7 +18,21 @@ public class Fish extends Sandwich {
      */
 	@Override
 	public double price() {
-		return INIT_PRICE + (extras.size() * PER_EXTRA);
+        return PER_EXTRA * extras.size() + initSandwichPrice;
+    }
+
+    @Override
+    public boolean add(Object obj) {
+        Extra ingredient = (Extra) obj;
+        extras.add(ingredient);
+        return true;
+    }
+
+    @Override
+    public boolean remove(Object obj) {
+        Extra ingredient = (Extra) obj;
+        extras.remove(ingredient);
+        return true;
     }
     
     /**
