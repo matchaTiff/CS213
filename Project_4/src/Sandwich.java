@@ -5,11 +5,20 @@ public abstract class Sandwich implements Customizable {
     static final double PER_EXTRA = 1.99;
     protected ArrayList<Extra> extras;
 
-    // from Customizable interface
+    /**
+     * comment here
+     * @return
+     */
+    @Override
     public boolean add(Object obj) {
 
     }
 
+    /**
+     * comment here
+     * @return
+     */
+    @Override
     public boolean remove(Object obj) {
 
     }

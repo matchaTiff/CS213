@@ -1,4 +1,15 @@
+import java.util.ArrayList;
+
 public class Fish extends Sandwich {
+    private static final double INIT_PRICE = 12.99;
+
+    /**
+     * Default constructor
+     */
+    public Fish() {
+        super();
+        extras = new ArrayList<Extra>();
+    }
 
     /**
      * Abstract method that returns the price for the fish sandwich
@@ -6,8 +17,7 @@ public class Fish extends Sandwich {
      */
 	@Override
 	public double price() {
-		// TODO Auto-generated method stub
-		return 0;
+		return INIT_PRICE + (extras.size() * PER_EXTRA);
     }
     
     /**
@@ -16,7 +26,7 @@ public class Fish extends Sandwich {
      */
     @Override
     public String toString() {
-
+        return "Fish Sandwich; Grilled Snapper, Cilantro, Lime, Extra: " + super.toString() + price();
     }
 
     

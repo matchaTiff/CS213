@@ -1,4 +1,15 @@
+import java.util.ArrayList;
+
 public class Beef extends Sandwich {
+    private static final double INIT_PRICE = 10.99;
+
+    /**
+     * Default constructor
+     */
+    public Beef() {
+        super();
+        extras = new ArrayList<Extra>();
+    }
 
     /**
      * Abstract method that returns the price for the beef sandwich
@@ -6,8 +17,7 @@ public class Beef extends Sandwich {
      */
 	@Override
 	public double price() {
-		// TODO Auto-generated method stub
-		return 0;
+		return INIT_PRICE + (extras.size() * PER_EXTRA);
     }
     
     /**
@@ -16,7 +26,7 @@ public class Beef extends Sandwich {
      */
     @Override
     public String toString() {
-        
+        return "Beef Sandwich; Roast Beef, Provolone Cheese, Mustard, Extra: " + super.toString() + price();
     }
     
 }
