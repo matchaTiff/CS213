@@ -14,13 +14,15 @@ public class Controller {
     @FXML private Label ingredients;
     @FXML private ImageView sandwichImage;
     @FXML private ListView extraIngredients;
+    @FXML private ListView selectedIngredients;
 
     private Image image;
+    private int MAX_EXTRAS = 6;
 
-    Extra ingredient1 = new Extra("Ingredient 1");
-    Extra ingredient2 = new Extra("Ingredient 2");
-    Extra ingredient3 = new Extra("Ingredient 3");
-    Extra ingredient4 = new Extra("Ingredient 4");
+    Extra ingredient1 = new Extra("Onions");
+    Extra ingredient2 = new Extra("Relish");
+    Extra ingredient3 = new Extra("Ranch");
+    Extra ingredient4 = new Extra("Mayonnaise");
     Extra ingredient5 = new Extra("Ingredient 5");
     Extra ingredient6 = new Extra("Ingredient 6");
     Extra ingredient7 = new Extra("Ingredient 7");
@@ -69,14 +71,33 @@ public class Controller {
     }
 
     public void add(){
+        if( selectedIngredients.getItems().size() < MAX_EXTRAS ) { // Be sure that the size does not exceed the max amount of extras
+            if( extraIngredients.getSelectionModel().getSelectedIndex() != -1 ) { // Tests whether or not an item was selected
+                selectedIngredients.getItems().add(extraIngredients.getItems().remove(extraIngredients.getSelectionModel().getSelectedIndex()));
+            }
+            //extraIngredients.getItems().remove( extraIngredients.getSelectionModel().getSelectedIndex() );
+        }else{ // Can't add anymore items
+
+        }
     }
 
     public void remove(){
-
+        if( selectedIngredients.getItems().size() > 0 ){ // There are still items in the selected items
+            if( selectedIngredients.getSelectionModel().getSelectedIndex() != -1 ) { // Tests whether or not an item was selected
+                extraIngredients.getItems().add(selectedIngredients.getItems().remove(selectedIngredients.getSelectionModel().getSelectedIndex()));
+            }
+        }else{
+            // Print that there are no more items
+        }
     }
 
     public void clear(){
+        if( selectedIngredients.getItems().size() > 0 ) { // There are items selected
+            extraIngredients.getItems().addAll( selectedIngredients.getItems() );
+            selectedIngredients.getItems().clear();
+        }else{ // There are no items to clear
 
+        }
     }
 
 
