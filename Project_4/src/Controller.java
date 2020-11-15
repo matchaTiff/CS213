@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Controller {
 
@@ -17,6 +18,7 @@ public class Controller {
     @FXML private ListView extraIngredients;
     @FXML private ListView selectedIngredients;
     @FXML private TextField priceOfSandwich;
+    @FXML private Button showOrderButton;
 
     private Sandwich sandwich;
     private Image image;
@@ -77,6 +79,10 @@ public class Controller {
         }
         priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
 
+    }
+
+    public void showOrderClicked() throws IOException {
+        new NewStage(); // create second stage
     }
 
     public void add(){
