@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * Beef class that extends Sandwich class.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public class Beef extends Sandwich {
 
     private final double initSandwichPrice = 10.99;
@@ -18,7 +24,6 @@ public class Beef extends Sandwich {
      */
 	@Override
 	public double price() {
-		// TODO Auto-generated method stub
 		return PER_EXTRA * extras.size() + initSandwichPrice;
     }
 

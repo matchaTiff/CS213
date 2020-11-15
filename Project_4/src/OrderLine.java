@@ -1,3 +1,9 @@
+/**
+ * OrderLine class, describes an item in the order.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public class OrderLine {
     private int lineNumber; //a serial number created when a sandwich is added to the order
     private Sandwich sandwich;
@@ -17,6 +23,7 @@ public class OrderLine {
     }
 
     /**
+     * Getter method for line number
      * @return order line number
      */
     public int getLineNum() {
@@ -24,14 +31,16 @@ public class OrderLine {
     }
     
     /**
-     * @return sandwich
+     * Getter method for sandiwch
+     * @return the sandwich in the orderline
      */
     public Sandwich getSandwich() {
         return sandwich;
     }
 
     /**
-     * @return order line number
+     * Getter method for price
+     * @return the price of the orderline
      */
     public double getPrice() {
         return price;

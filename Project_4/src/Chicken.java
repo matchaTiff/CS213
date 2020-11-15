@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * Chicken class that extends Sandwich class.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public class Chicken extends Sandwich{
 
     private final double initSandwichPrice = 8.99;

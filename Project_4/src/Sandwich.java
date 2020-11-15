@@ -1,13 +1,21 @@
 import java.util.ArrayList;
 
+/**
+ * Abstract class that describes a sandwich. Be able to add extra ingredients to
+ * the sandwich as well as remove them.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public abstract class Sandwich implements Customizable {
     static final int MAX_EXTRAS = 6;
     static final double PER_EXTRA = 1.99;
     protected ArrayList<Extra> extras;
 
     /**
-     * comment here
-     * @return
+     * Add the extra ingredient to the array "extras"
+     * @param obj the object that to be added
+     * @return true if added, false if otherwise
      */
     @Override
     public boolean add(Object obj) {
@@ -15,14 +23,16 @@ public abstract class Sandwich implements Customizable {
             Extra ingredient = (Extra) obj;
             extras.add(ingredient);
             return true;
-        }else{
+        }
+        else {
             return false;
         }
     }
 
     /**
-     * comment here
-     * @return
+     * Remove the extra ingredient
+     * @param obj the object that to be removed
+     * @return true if removed, false if otherwise
      */
     @Override
     public boolean remove(Object obj) {

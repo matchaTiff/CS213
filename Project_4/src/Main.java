@@ -6,6 +6,12 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The NewStage class sets up the second stage.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 class NewStage {
     
     NewStage() throws IOException {
@@ -22,7 +28,7 @@ class NewStage {
 
 /**
  * The main class sets up the application by connecting the FXML file
- * and the Controller class. Launches the scene for the application
+ * and the Controller class. Launches the scene for the application.
  * 
  * @author Seth Santos, Tiffany Chen
  * 
@@ -41,9 +47,7 @@ public class Main extends Application {
         primaryStage.show();
 
     }
-
-
-
+    
     public static void main(String[] args) {
         launch(args);
     }

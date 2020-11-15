@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * Fish class that extends Sandwich class.
+ * 
+ * @author Seth Santos, Tiffany Chen
+ * 
+ */
 public class Fish extends Sandwich {
 
     private final double initSandwichPrice = 12.99;
