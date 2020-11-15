@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import javafx.scene.control.TextField;
 
 import java.awt.*;
 import java.io.File;
@@ -15,7 +16,9 @@ public class Controller {
     @FXML private ImageView sandwichImage;
     @FXML private ListView extraIngredients;
     @FXML private ListView selectedIngredients;
+    @FXML private TextField priceOfSandwich;
 
+    private Sandwich sandwich;
     private Image image;
     private int MAX_EXTRAS = 6;
 
@@ -39,6 +42,7 @@ public class Controller {
         sandwichChoices.getSelectionModel().selectFirst();
         if( sandwichChoices.getValue().equals("Chicken Sandwich") ) {
             ingredients.setText("Lettuce, tomato, fried chicken, mayo");
+            sandwich = new Chicken();
         }
 
         extraIngredients.getItems().addAll(
@@ -53,6 +57,7 @@ public class Controller {
                 ingredient9.getExtraName(),
                 ingredient10.getExtraName()
         );
+        priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
 
     }
 
@@ -60,20 +65,27 @@ public class Controller {
         if( sandwichChoices.getValue().equals("Chicken Sandwich") ) {
             sandwichImage.setImage(new Image("chicken_sandwich.png"));
             ingredients.setText("Lettuce, tomato, fried chicken, mayo");
+            sandwich = new Chicken();
         }else if( sandwichChoices.getValue().equals("Beef Sandwich") ){
             sandwichImage.setImage(new Image("beef_sandwich.png"));
             ingredients.setText("Beef, cheese, tomato, lettuce");
+            sandwich = new Beef();
         }else{
             sandwichImage.setImage(new Image("fish_sandwich.png"));
             ingredients.setText("Fried fish fillet, lettuce, tartar sauce");
+            sandwich = new Fish();
         }
+        priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
 
     }
 
     public void add(){
         if( selectedIngredients.getItems().size() < MAX_EXTRAS ) { // Be sure that the size does not exceed the max amount of extras
             if( extraIngredients.getSelectionModel().getSelectedIndex() != -1 ) { // Tests whether or not an item was selected
-                selectedIngredients.getItems().add(extraIngredients.getItems().remove(extraIngredients.getSelectionModel().getSelectedIndex()));
+                selectedIngredients.getItems().add( extraIngredients.getItems().remove(extraIngredients.getSelectionModel().getSelectedIndex()) );
+                sandwich.extras.clear();
+                sandwich.extras.addAll( selectedIngredients.getItems() );
+                priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
             }
             //extraIngredients.getItems().remove( extraIngredients.getSelectionModel().getSelectedIndex() );
         }else{ // Can't add anymore items
@@ -85,6 +97,9 @@ public class Controller {
         if( selectedIngredients.getItems().size() > 0 ){ // There are still items in the selected items
             if( selectedIngredients.getSelectionModel().getSelectedIndex() != -1 ) { // Tests whether or not an item was selected
                 extraIngredients.getItems().add(selectedIngredients.getItems().remove(selectedIngredients.getSelectionModel().getSelectedIndex()));
+                sandwich.extras.clear();
+                sandwich.extras.addAll( selectedIngredients.getItems() );
+                priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
             }
         }else{
             // Print that there are no more items
@@ -95,6 +110,9 @@ public class Controller {
         if( selectedIngredients.getItems().size() > 0 ) { // There are items selected
             extraIngredients.getItems().addAll( selectedIngredients.getItems() );
             selectedIngredients.getItems().clear();
+            sandwich.extras.clear();
+            sandwich.extras.addAll( selectedIngredients.getItems() );
+            priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
         }else{ // There are no items to clear
 
         }

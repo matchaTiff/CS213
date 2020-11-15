@@ -93,7 +93,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <TextField editable="false" prefHeight="25.0" prefWidth="195.0" text="0.00" />
+                        <TextField fx:id="priceOfSandwich" editable="false" prefHeight="25.0" prefWidth="195.0" text="0.00" />
                      </children>
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="74.0" prefWidth="214.0" spacing="20.0">
