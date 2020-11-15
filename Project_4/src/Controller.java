@@ -28,12 +28,12 @@ public class Controller {
     Extra ingredient2 = new Extra("Relish");
     Extra ingredient3 = new Extra("Ranch");
     Extra ingredient4 = new Extra("Mayonnaise");
-    Extra ingredient5 = new Extra("Ingredient 5");
-    Extra ingredient6 = new Extra("Ingredient 6");
-    Extra ingredient7 = new Extra("Ingredient 7");
-    Extra ingredient8 = new Extra("Ingredient 8");
-    Extra ingredient9 = new Extra("Ingredient 9");
-    Extra ingredient10 = new Extra("Ingredient 10");
+    Extra ingredient5 = new Extra("Bacon");
+    Extra ingredient6 = new Extra("Pesto");
+    Extra ingredient7 = new Extra("Blue Cheese");
+    Extra ingredient8 = new Extra("Pickles");
+    Extra ingredient9 = new Extra("Peppers");
+    Extra ingredient10 = new Extra("Olives");
 
     public void initialize() {
         sandwichChoices.getItems().addAll(

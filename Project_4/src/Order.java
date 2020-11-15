@@ -4,17 +4,6 @@ public class Order implements Customizable {
     public static int lineNumber; //reset for each new order;
 	private ArrayList<OrderLine> orderlines;
 
-	static int incrementLineNumber() {
-		return lineNumber++;
-	}
-
-	static int decrementLineNumber() {
-		return lineNumber--;
-	}
-
-	public int getLineNumber() {
-		return lineNumber;
-	}
     
 	@Override
 	public boolean add(Object obj) {
