@@ -38,7 +38,11 @@ public class OrderController {
     }
 
     public void clear(){
-
+        while(copyOrder.getOrderlines().size() != 0){
+            copyOrder.remove(0);
+        }
+        orderView.getItems().clear();
+        setPriceText();
     }
 
     public void addSameOrderLine(){
