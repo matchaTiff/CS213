@@ -44,7 +44,7 @@ public class OrderController {
      */
     public void clear(){
         while(copyOrder.getOrderLines().size() != 0){
-            copyOrder.remove(0);
+            copyOrder.remove(0); // Remove the first instance until none left
         }
         orderView.getItems().clear();
         setPriceText();
