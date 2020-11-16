@@ -28,6 +28,10 @@ public class Order implements Customizable {
      */
 	@Override
 	public boolean add(Object obj) {
+		if(!(obj instanceof Sandwich)){
+			return false;
+		}
+
 		Sandwich newSandwich = (Sandwich) obj;
 		OrderLine sandwichOrder = new OrderLine(orderlines.size()+1, newSandwich, newSandwich.price());
 		orderlines.add(sandwichOrder);
@@ -48,12 +52,18 @@ public class Order implements Customizable {
      */
 	@Override
 	public boolean remove(Object obj) {
+		if( !(obj instanceof Integer) || (int) obj == -1){
+			return false;
+		}
 		int removeIndex = (int) obj + 1;
 		if(orderlines.isEmpty()) {
 			return false;
 		}
 		else if(!orderlines.isEmpty()) {
 			boolean removed = false;
+			if( removeIndex > orderlines.size() ){
+				return false;
+			}
 			for(OrderLine line : orderlines){
 				if(line.getLineNum() == removeIndex){
 					orderlines.remove(line);
@@ -88,10 +98,6 @@ public class Order implements Customizable {
 	 * @return orderlines array
 	 */
 	public ArrayList<OrderLine> getOrderLines() {
-		return orderlines;
-	}
-
-	public ArrayList<OrderLine> getOrderlines(){
 		return orderlines;
 	}
 

@@ -40,7 +40,7 @@ public class OrderController {
     }
 
     public void clear(){
-        while(copyOrder.getOrderlines().size() != 0){
+        while(copyOrder.getOrderLines().size() != 0){
             copyOrder.remove(0);
         }
         orderView.getItems().clear();
@@ -48,7 +48,10 @@ public class OrderController {
     }
 
     public void addSameOrderLine(){
-        copyOrder.add( copyOrder.getOrderlines().get( orderView.getSelectionModel().getSelectedIndex() ).getSandwich() );
+        if(orderView.getSelectionModel().getSelectedIndex() == -1){
+            return;
+        }
+        copyOrder.add( copyOrder.getOrderLines().get( orderView.getSelectionModel().getSelectedIndex() ).getSandwich() );
         orderView.getItems().clear();
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
