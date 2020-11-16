@@ -48,7 +48,9 @@ public class OrderController {
     public void addSameOrderLine(){
         copyOrder.add( copyOrder.getOrderlines().get( orderView.getSelectionModel().getSelectedIndex() ).getSandwich() );
         orderView.getItems().clear();
-        orderView.getItems().addAll( copyOrder );
+        for(OrderLine line : orderlines) {
+            orderView.getItems().add(line);
+        }
         setPriceText();
     }
 
