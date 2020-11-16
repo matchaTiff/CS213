@@ -13,7 +13,7 @@ public class Chicken extends Sandwich{
     /**
      * Default constructor
      */
-    public Chicken(){
+    public Chicken() {
         super();
         extras = new ArrayList<Extra>();
     }

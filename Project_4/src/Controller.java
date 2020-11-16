@@ -1,13 +1,11 @@
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.control.TextField;
-
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -27,10 +25,15 @@ public class Controller {
     @FXML private ListView selectedIngredients;
     @FXML private TextField priceOfSandwich;
     @FXML private Button showOrderButton;
+    @FXML private Button addToOrderButton;
+
 
     private Sandwich sandwich;
     private Image image;
     private int MAX_EXTRAS = 6;
+
+    private char sandwichType;
+    private Order order = new Order();
 
     Extra ingredient1 = new Extra("Onions");
     Extra ingredient2 = new Extra("Relish");
@@ -71,6 +74,14 @@ public class Controller {
                 ingredient10.getExtraName()
         );
         priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
+
+        if(new Controller2().whenClosed() == true) {
+            // showOrderButton.setDisable(false);
+        }
+    }
+
+    public void addToOrderClicked() {
+        
     }
 
     /**

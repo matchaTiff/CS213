@@ -1,10 +1,12 @@
 import java.io.IOException;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * The NewStage class sets up the second stage.
@@ -21,7 +23,7 @@ class NewStage {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setController(controllerInstance);
         subStage.setTitle("Order Details");
-        subStage.setScene(new Scene(root, 600, 716));
+        subStage.setScene(new Scene(root, 600, 400));
         subStage.show();
     }
 }
