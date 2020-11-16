@@ -28,7 +28,7 @@ public class OrderController {
 
     public void getOrder(Controller controller) {
         copyOrder = controller.returnOrder();
-        System.out.println(copyOrder.getOrderLines().toString());
+        //System.out.println(copyOrder.getOrderLines().toString());
         orderlines = copyOrder.getOrderLines();
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
