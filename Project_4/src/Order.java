@@ -17,7 +17,7 @@ public class Order implements Customizable {
 	 * Default Constructor
 	 */
 	public Order(){
-		lineNumber = 1;
+		lineNumber = 1; // Start of the line numbers
 		this.orderlines = new ArrayList<OrderLine>();
 	}
 
