@@ -13,6 +13,11 @@ public class Order implements Customizable {
     public static int lineNumber; //reset for each new order;
 	private ArrayList<OrderLine> orderlines;
 
+	public Order(){
+		lineNumber = 1;
+		this.orderlines = new ArrayList<OrderLine>();
+	}
+
 	/**
      * Adds orderline to order
      * @param obj the type of obj to be added
@@ -20,11 +25,20 @@ public class Order implements Customizable {
      */
 	@Override
 	public boolean add(Object obj) {
-		OrderLine sandwichOrder = (OrderLine) obj;
+		Sandwich newSandwich = (Sandwich) obj;
+		OrderLine sandwichOrder = new OrderLine(lineNumber, newSandwich, newSandwich.price());
 		orderlines.add(sandwichOrder);
 		lineNumber++;
 		// incrementLineNumber();
-        return true;
+
+		/*
+		for(OrderLine l : orderlines){
+			System.out.println(l.getLineNum() + " " + l.getSandwich().toString() + " " + l.getPrice());
+		}
+		System.out.println();
+		*/
+
+		return true;
 	}
 
 	/**

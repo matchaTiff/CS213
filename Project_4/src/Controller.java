@@ -31,6 +31,7 @@ public class Controller {
     private Sandwich sandwich;
     private Image image;
     private int MAX_EXTRAS = 6;
+    Order order = new Order();
 
     Extra ingredient1 = new Extra("Onions");
     Extra ingredient2 = new Extra("Relish");
@@ -156,4 +157,10 @@ public class Controller {
             // There are no items to clear
         }
     }
+
+    public void addToOrder() {
+        //OrderLine newOrderLine = new OrderLine(1, sandwich, sandwich.price() );
+        order.add(sandwich);
+    }
+
 }

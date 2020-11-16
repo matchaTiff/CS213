@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Abstract class that describes a sandwich. Be able to add extra ingredients to
@@ -54,7 +55,7 @@ public abstract class Sandwich implements Customizable {
     @Override
     public String toString() {
         // print out extra ingredients
-        return null;
+        return Arrays.toString(extras.toArray());
     }
     
 }
