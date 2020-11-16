@@ -29,7 +29,11 @@ public class OrderLine {
     public int getLineNum() {
         return lineNumber;
     }
-    
+
+    public void setLineNum(int num){
+        lineNumber = num;
+    }
+
     /**
      * Getter method for sandiwch
      * @return the sandwich in the orderline

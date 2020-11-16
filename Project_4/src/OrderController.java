@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ListView;
 
 /**
@@ -13,8 +18,10 @@ import javafx.scene.control.ListView;
 public class OrderController {
     @FXML private Button backButton;
     @FXML private ListView orderView;
-    
+
     private Order copyOrder = new Order();
+    //@FXML private ListView allOrders;
+
 
     private ArrayList<OrderLine> orderlines;
 
@@ -27,7 +34,24 @@ public class OrderController {
         }
     }
 
-    public void initialize() {
+    public void clear(){
+
+    }
+
+    public void addSameOrderLine(){
+        copyOrder.add( copyOrder.getOrderlines().get( orderView.getSelectionModel().getSelectedIndex() ).getSandwich() );
+        orderView.getItems().clear();
+        orderView.getItems().addAll( copyOrder );
+    }
+
+    public void removeOrderLine(){
+        copyOrder.remove( orderView.getSelectionModel().getSelectedIndex() );
+        orderView.getItems().clear();
+        //orderView.getItems().addAll( copyOrder.getOrderLines() );
+
+        for(OrderLine line : orderlines) {
+            orderView.getItems().add(line);
+        }
     }
 
     public void backButtonPressed() {

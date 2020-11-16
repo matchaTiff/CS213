@@ -29,7 +29,7 @@ public class Order implements Customizable {
 	@Override
 	public boolean add(Object obj) {
 		Sandwich newSandwich = (Sandwich) obj;
-		OrderLine sandwichOrder = new OrderLine(lineNumber, newSandwich, newSandwich.price());
+		OrderLine sandwichOrder = new OrderLine(orderlines.size()+1, newSandwich, newSandwich.price());
 		orderlines.add(sandwichOrder);
 		lineNumber++;
 
@@ -48,13 +48,33 @@ public class Order implements Customizable {
      */
 	@Override
 	public boolean remove(Object obj) {
+		int removeIndex = (int) obj + 1;
 		if(orderlines.isEmpty()) {
 			return false;
 		}
 		else if(!orderlines.isEmpty()) {
-			OrderLine line = (OrderLine) obj;
-			orderlines.remove(line);
-			lineNumber++;
+			boolean removed = false;
+			for(OrderLine line : orderlines){
+				if(line.getLineNum() == removeIndex){
+					orderlines.remove(line);
+					removed = true;
+					if( removeIndex > orderlines.size() ){
+						return true;
+					}
+				}
+			}
+
+			for(OrderLine line : orderlines){
+				if( line.getLineNum() < removeIndex + 1 ){
+					continue;
+				}
+				if(removed == true){
+					int newNum = line.getLineNum() - 1;
+					line.setLineNum( newNum );
+				}
+			}
+
+			lineNumber--;
         	return true;
 		}
 		else {
@@ -68,4 +88,9 @@ public class Order implements Customizable {
 	public ArrayList<OrderLine> getOrderLines() {
 		return orderlines;
 	}
+
+	public ArrayList<OrderLine> getOrderlines(){
+		return orderlines;
+	}
+
 }

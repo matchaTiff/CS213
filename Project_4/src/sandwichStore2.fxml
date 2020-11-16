@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OrderController">
    <children>
       <VBox prefHeight="400.0" prefWidth="600.0" spacing="20.0">
          <children>
@@ -29,10 +29,10 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Same order line" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="214.0" text="Clear Order" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Remove order line" GridPane.columnIndex="1" />
-                  <Button fx:id="backButton" onAction="#backButtonPressed" mnemonicParsing="false" prefHeight="25.0" prefWidth="298.0" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#addSameOrderLine" prefHeight="25.0" prefWidth="160.0" text="Same order line" />
+                  <Button mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="214.0" text="Clear Order" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#removeOrderLine" prefHeight="25.0" prefWidth="146.0" text="Remove order line" GridPane.columnIndex="1" />
+                  <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="25.0" prefWidth="298.0" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="283.0" text="Save Order to File" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                      <children>
