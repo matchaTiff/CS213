@@ -31,6 +31,7 @@ public class Controller {
     private Sandwich sandwich;
     private Image image;
     private int MAX_EXTRAS = 6;
+    Order order = new Order();
 
     private char sandwichType;
     private Order order = new Order();
@@ -167,4 +168,10 @@ public class Controller {
             // There are no items to clear
         }
     }
+
+    public void addToOrder() {
+        //OrderLine newOrderLine = new OrderLine(1, sandwich, sandwich.price() );
+        order.add(sandwich);
+    }
+
 }

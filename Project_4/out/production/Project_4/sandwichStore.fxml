@@ -98,7 +98,7 @@
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="74.0" prefWidth="214.0" spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="148.0" text="Add to Order" />
+                        <Button mnemonicParsing="false" onAction="#addToOrder" prefHeight="25.0" prefWidth="148.0" text="Add to Order" />
                         <Button mnemonicParsing="false" onAction="#showOrderClicked" prefHeight="25.0" prefWidth="153.0" text="Show Order" />
                      </children>
                   </VBox>
