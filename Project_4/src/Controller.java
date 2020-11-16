@@ -186,7 +186,7 @@ public class Controller {
     public void addToOrder() {
         //OrderLine newOrderLine = new OrderLine(1, sandwich, sandwich.price() );
         order.add(sandwich);
-        System.out.println(order.getOrderlines().get(0).getSandwich());
+        //System.out.println(order.getOrderLines().get(0).getSandwich());
     }
 
 }
