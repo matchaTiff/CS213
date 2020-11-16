@@ -21,4 +21,12 @@ public class Extra {
     public String getExtraName() {
         return name;
     }
+
+    /**
+     * @return String of extra name
+     */
+    @Override
+    public String toString() {
+        return name;
+    }
 }

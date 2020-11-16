@@ -54,7 +54,11 @@ public abstract class Sandwich implements Customizable {
      */
     @Override
     public String toString() {
-        // print out extra ingredients
-        return Arrays.toString(extras.toArray());
+        if(extras.isEmpty()) {
+            return "none";
+        }
+        else {
+            return Arrays.toString(extras.toArray());
+        }
     }
 }
