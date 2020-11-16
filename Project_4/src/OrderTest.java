@@ -41,10 +41,11 @@ class OrderTest {
         ArrayList<OrderLine> order1OrderLine = order1.getOrderLines();
         ArrayList<OrderLine> order2OrderLine = order2.getOrderLines();
 
-        System.out.println( orderLine1.equals(order1OrderLine) );
+        //System.out.println( orderLine1.equals(order1OrderLine) );
 
-       // assertTrue( Arrays.equals(order1OrderLine, orderLine1) );
-        assertEquals( orderLine1, order1OrderLine );
+
+       // assertTrue( order1OrderLine.contentEquals(orderLine1) );
+        //assertTrue( Arrays.equals(orderLine2, order2OrderLine) );
         assertFalse( orderLine1.equals(order2.getOrderLines()) );
         assertFalse( orderLine2.equals(order1.getOrderLines()) );
 
