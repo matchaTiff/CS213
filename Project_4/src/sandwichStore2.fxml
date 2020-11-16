@@ -37,7 +37,7 @@
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                      <children>
                         <Label prefHeight="17.0" prefWidth="88.0" text="Order Total $" />
-                        <TextField prefHeight="25.0" prefWidth="114.0" />
+                        <TextField fx:id="totalPrice" editable="false" prefHeight="25.0" prefWidth="114.0" />
                      </children>
                   </HBox>
                </children>

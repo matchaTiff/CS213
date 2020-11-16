@@ -60,6 +60,8 @@ public class Order implements Customizable {
 					removed = true;
 					if( removeIndex > orderlines.size() ){
 						return true;
+					}else if( removeIndex == 1 ){
+						break;
 					}
 				}
 			}

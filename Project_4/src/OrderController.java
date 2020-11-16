@@ -18,6 +18,7 @@ import javafx.scene.control.ListView;
 public class OrderController {
     @FXML private Button backButton;
     @FXML private ListView orderView;
+    @FXML private TextField totalPrice;
 
     private Order copyOrder = new Order();
     //@FXML private ListView allOrders;
@@ -32,6 +33,8 @@ public class OrderController {
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
         }
+
+        setPriceText();
     }
 
     public void clear(){
@@ -42,6 +45,7 @@ public class OrderController {
         copyOrder.add( copyOrder.getOrderlines().get( orderView.getSelectionModel().getSelectedIndex() ).getSandwich() );
         orderView.getItems().clear();
         orderView.getItems().addAll( copyOrder );
+        setPriceText();
     }
 
     public void removeOrderLine(){
@@ -52,6 +56,15 @@ public class OrderController {
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
         }
+        setPriceText();
+    }
+
+    public void setPriceText(){
+        double total = 0;
+        for(OrderLine line : orderlines){
+            total += line.getPrice();
+        }
+        totalPrice.setText( String.format("%.2f", total ) );
     }
 
     public void backButtonPressed() {
