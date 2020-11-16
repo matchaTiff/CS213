@@ -57,5 +57,4 @@ public abstract class Sandwich implements Customizable {
         // print out extra ingredients
         return Arrays.toString(extras.toArray());
     }
-    
 }

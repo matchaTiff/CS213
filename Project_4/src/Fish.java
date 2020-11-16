@@ -33,7 +33,7 @@ public class Fish extends Sandwich {
      */
     @Override
     public String toString() {
-        return "Fish Sandwich; Grilled Snapper, Cilantro, Lime, Extra: " + super.toString() + price();
+        return "Fish Sandwich; Grilled Snapper, Cilantro, Lime, Extra: " + super.toString();
     }
 
     

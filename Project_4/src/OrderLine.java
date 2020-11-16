@@ -45,5 +45,14 @@ public class OrderLine {
     public double getPrice() {
         return price;
     }
+
+    /**
+     * Formats the output of the orderline details
+     * @return Type of sandwich, its ingredients, and the price
+     */
+    @Override
+    public String toString() {
+        return lineNumber + " " + sandwich.toString() + " Price $" + getPrice();
+    }
     
 }

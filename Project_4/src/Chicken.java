@@ -33,6 +33,6 @@ public class Chicken extends Sandwich{
      */
     @Override
     public String toString() {
-        return "Chicken Sandwich; Fried Chicken, Spicy Sauce, Pickles, Extra: " + super.toString() + price();
+        return "Chicken Sandwich; Fried Chicken, Spicy Sauce, Pickles, Extra: " + super.toString();
     }
 }

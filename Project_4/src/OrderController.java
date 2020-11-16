@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -14,9 +13,6 @@ import javafx.scene.control.ListView;
 public class OrderController {
     @FXML private Button backButton;
     @FXML private ListView orderView;
-
-    private Controller controller;
-    private OrderController orderController = this;
     
     private Order copyOrder = new Order();
 
