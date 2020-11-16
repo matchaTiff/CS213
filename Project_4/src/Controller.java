@@ -1,9 +1,13 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import javafx.scene.control.TextField;
 import java.io.IOException;
@@ -26,6 +30,7 @@ public class Controller {
     @FXML private TextField priceOfSandwich;
     @FXML private Button showOrderButton;
     @FXML private Button addToOrderButton;
+    @FXML Controller controller = this;
 
 
     private Sandwich sandwich;
@@ -102,7 +107,17 @@ public class Controller {
      * @throws IOException
      */
     public void showOrderClicked() throws IOException {
-        new NewStage(); // create second stage
+        Stage subStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("sandwichStore2.fxml"));
+        Controller controllerInstance = new Controller();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setController(controllerInstance);
+        subStage.setTitle("Order Details");
+        subStage.setScene(new Scene(root, 600, 400));
+        subStage.show();
+
+        OrderController orderController = fxmlLoader.getController();
+        orderController.getOrder(order);
     }
 
     /**
