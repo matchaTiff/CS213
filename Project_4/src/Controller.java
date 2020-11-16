@@ -31,9 +31,7 @@ public class Controller {
     private Sandwich sandwich;
     private Image image;
     private int MAX_EXTRAS = 6;
-    Order order = new Order();
 
-    private char sandwichType;
     private Order order = new Order();
 
     Extra ingredient1 = new Extra("Onions");
@@ -75,14 +73,6 @@ public class Controller {
                 ingredient10.getExtraName()
         );
         priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
-
-        if(new Controller2().whenClosed() == true) {
-            // showOrderButton.setDisable(false);
-        }
-    }
-
-    public void addToOrderClicked() {
-        
     }
 
     /**
