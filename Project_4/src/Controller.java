@@ -50,6 +50,10 @@ public class Controller {
     Extra ingredient9 = new Extra("Peppers");
     Extra ingredient10 = new Extra("Olives");
 
+    public Order returnOrder() {
+        return order;
+    }
+
     /**
      * Initializes any controls. Set selection choices.
     */
@@ -111,7 +115,8 @@ public class Controller {
         Parent root = loader.load();
 
         OrderController orderController = loader.getController();
-        orderController.getOrder(order);
+        orderController.initialize();
+        orderController.getOrder(controller);
 
         Stage subStage = new Stage();
         subStage.setTitle("Order Details");

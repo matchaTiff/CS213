@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Order class, includes many order lines which contains the sandwich, its extra
@@ -18,6 +19,10 @@ public class Order implements Customizable {
 		this.orderlines = new ArrayList<OrderLine>();
 	}
 
+	public String printArray() {
+		return Arrays.toString(orderlines.toArray());
+	}
+
 	/**
      * Adds orderline to order
      * @param obj the type of obj to be added
@@ -31,12 +36,12 @@ public class Order implements Customizable {
 		lineNumber++;
 		// incrementLineNumber();
 
-		/*
+		
 		for(OrderLine l : orderlines){
 			System.out.println(l.getLineNum() + " " + l.getSandwich().toString() + " " + l.getPrice());
 		}
 		System.out.println();
-		*/
+		
 
 		return true;
 	}
@@ -61,5 +66,9 @@ public class Order implements Customizable {
 		else {
 			return false;
 		}
+	}
+
+	public ArrayList<OrderLine> getOrderLines() {
+		return orderlines;
 	}
 }

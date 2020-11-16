@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 
 /**
  * Second Controller class that controls the data flow into the model object and updates the view when
@@ -10,19 +13,28 @@ import javafx.scene.control.Button;
  */
 public class OrderController {
     @FXML private Button backButton;
-    
-    private Order copyOrder;
+    @FXML private ListView orderView;
 
-    public void getOrder(Order order) {
-        copyOrder = order;
+    private Controller controller;
+    private OrderController orderController = this;
+    
+    private Order copyOrder = new Order();
+
+    private ArrayList<OrderLine> orderlines;
+
+    public void getOrder(Controller controller) {
+        copyOrder = controller.returnOrder();
+        System.out.println(copyOrder.getOrderLines().toString());
+        orderlines = copyOrder.getOrderLines();
+        for(OrderLine line : orderlines) {
+            orderView.getItems().add(line);
+        }
     }
 
     public void initialize() {
-
     }
 
     public void backButtonPressed() {
         
     }
-
 }
