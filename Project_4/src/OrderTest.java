@@ -38,14 +38,11 @@ class OrderTest {
         orderLine2.add( new OrderLine(3, sandwich6, sandwich6.price() ) );
         orderLine2.add( new OrderLine(4, sandwich7, sandwich7.price() ) );
 
-        ArrayList<OrderLine> order1OrderLine = order1.getOrderLines();
-        ArrayList<OrderLine> order2OrderLine = order2.getOrderLines();
+        //Tests to make sure that the objects stored in the orderLines array is the same as what we had sequentially entered.
+        assertTrue( order1.getOrderLines().get(0).getSandwich().equals(sandwich1) );
+        assertTrue( order1.getOrderLines().get(1).getSandwich().equals(sandwich2) );
+        assertTrue( order1.getOrderLines().get(2).getSandwich().equals(sandwich3) );
 
-        //System.out.println( orderLine1.equals(order1OrderLine) );
-
-
-       // assertTrue( order1OrderLine.contentEquals(orderLine1) );
-        //assertTrue( Arrays.equals(orderLine2, order2OrderLine) );
         assertFalse( orderLine1.equals(order2.getOrderLines()) );
         assertFalse( orderLine2.equals(order1.getOrderLines()) );
 
