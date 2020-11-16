@@ -117,6 +117,7 @@ public class Controller {
         subStage.setTitle("Order Details");
         subStage.setScene(new Scene(root, 600, 400));
         subStage.show();
+        //
     }
 
     /**
