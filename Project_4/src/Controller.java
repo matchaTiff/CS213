@@ -140,10 +140,12 @@ public class Controller {
                 sandwich.extras.clear();
                 sandwich.extras.addAll( selectedIngredients.getItems() );
                 priceOfSandwich.setText( String.format("%.2f", sandwich.price() ) );
-
+                /*
                 for(OrderLine line : order.getOrderLines()) {
                     System.out.println(line.toString());
                 }
+
+                 */
 
             }
             //extraIngredients.getItems().remove( extraIngredients.getSelectionModel().getSelectedIndex() );
