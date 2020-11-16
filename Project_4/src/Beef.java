@@ -35,5 +35,4 @@ public class Beef extends Sandwich {
     public String toString() {
         return "Beef Sandwich; Roast Beef, Provolone Cheese, Mustard, Extra: " + super.toString();
     }
-    
 }

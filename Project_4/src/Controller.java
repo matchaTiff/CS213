@@ -34,10 +34,8 @@ public class Controller {
 
 
     private Sandwich sandwich;
-    private Image image;
     private int MAX_EXTRAS = 6;
 
-    private char sandwichType;
     Order order = new Order();
 
     Extra ingredient1 = new Extra("Onions");
@@ -116,18 +114,13 @@ public class Controller {
         Parent root = loader.load();
 
         OrderController orderController = loader.getController();
-        //orderController.initialize();
         orderController.getOrder(controller);
 
         Stage subStage = new Stage();
         subStage.setTitle("Order Details");
         subStage.setScene(new Scene(root, 600, 400));
         subStage.show();
-
-        //
     }
-
-
 
     /**
      * When the Add button is clicked, Add the selected ingredients from the first ListView
@@ -144,9 +137,7 @@ public class Controller {
                 for(OrderLine line : order.getOrderLines()) {
                     System.out.println(line.toString());
                 }
-
                  */
-
             }
             //extraIngredients.getItems().remove( extraIngredients.getSelectionModel().getSelectedIndex() );
         }
@@ -194,7 +185,6 @@ public class Controller {
      * Adds the sandwich to the order instance
      */
     public void addToOrder() {
-        //OrderLine newOrderLine = new OrderLine(1, sandwich, sandwich.price() );
         order.add(sandwich);
         comboBox();
         //System.out.println(order.getOrderLines().get(0).getSandwich());

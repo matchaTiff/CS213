@@ -35,6 +35,4 @@ public class Fish extends Sandwich {
     public String toString() {
         return "Fish Sandwich; Grilled Snapper, Cilantro, Lime, Extra: " + super.toString();
     }
-
-    
 }
