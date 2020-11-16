@@ -8,8 +8,14 @@ import javafx.scene.control.Button;
  * @author Seth Santos, Tiffany Chen
  * 
  */
-public class Controller2 {
+public class OrderController {
     @FXML private Button backButton;
+    
+    private Order copyOrder;
+
+    public void getOrder(Order order) {
+        copyOrder = order;
+    }
 
     public void initialize() {
 

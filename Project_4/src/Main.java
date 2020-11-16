@@ -14,19 +14,19 @@ import javafx.stage.WindowEvent;
  * @author Seth Santos, Tiffany Chen
  * 
  */
-class NewStage {
+// class NewStage {
     
-    NewStage() throws IOException {
-        Stage subStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("sandwichStore2.fxml"));
-        Controller controllerInstance = new Controller();
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setController(controllerInstance);
-        subStage.setTitle("Order Details");
-        subStage.setScene(new Scene(root, 600, 400));
-        subStage.show();
-    }
-}
+//     NewStage() throws IOException {
+//         Stage subStage = new Stage();
+//         Parent root = FXMLLoader.load(getClass().getResource("sandwichStore2.fxml"));
+//         Controller controllerInstance = new Controller();
+//         FXMLLoader fxmlLoader = new FXMLLoader();
+//         fxmlLoader.setController(controllerInstance);
+//         subStage.setTitle("Order Details");
+//         subStage.setScene(new Scene(root, 600, 400));
+//         subStage.show();
+//     }
+// }
 
 /**
  * The main class sets up the application by connecting the FXML file
