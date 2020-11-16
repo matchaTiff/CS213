@@ -1,3 +1,5 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
@@ -6,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.ListView;
 
 /**
@@ -33,7 +36,6 @@ public class OrderController {
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
         }
-
         setPriceText();
     }
 
@@ -74,6 +76,25 @@ public class OrderController {
     }
 
     public void backButtonPressed() {
-        
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.close();
+    }
+
+    /**
+     * Takes order details and exports it into a text file.
+     * @throws FileNotFoundException
+     */
+    public void exportFile() throws FileNotFoundException {
+        try (PrintWriter out = new PrintWriter("order_details.txt")) {
+            if(!orderlines.isEmpty()) {
+                for(int i = 0; i < orderlines.size(); i++) {
+                    OrderLine line = orderlines.get(i);
+                    out.println(line.toString());
+                }
+            }
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

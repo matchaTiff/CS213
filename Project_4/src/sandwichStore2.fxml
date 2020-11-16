@@ -33,7 +33,7 @@
                   <Button mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="214.0" text="Clear Order" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" onAction="#removeOrderLine" prefHeight="25.0" prefWidth="146.0" text="Remove order line" GridPane.columnIndex="1" />
                   <Button fx:id="backButton" mnemonicParsing="false" onAction="#backButtonPressed" prefHeight="25.0" prefWidth="298.0" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="283.0" text="Save Order to File" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Button onAction="#exportFile" mnemonicParsing="false" prefHeight="25.0" prefWidth="283.0" text="Save Order to File" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                      <children>
                         <Label prefHeight="17.0" prefWidth="88.0" text="Order Total $" />
