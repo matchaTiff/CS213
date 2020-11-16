@@ -30,6 +30,10 @@ public class OrderLine {
         return lineNumber;
     }
 
+    /**
+     * changes the line number of the sandwich.
+     * @param num we want to change the line number to.
+     */
     public void setLineNum(int num){
         lineNumber = num;
     }

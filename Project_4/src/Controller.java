@@ -190,6 +190,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Adds the sandwich to the order instance
+     */
     public void addToOrder() {
         //OrderLine newOrderLine = new OrderLine(1, sandwich, sandwich.price() );
         order.add(sandwich);

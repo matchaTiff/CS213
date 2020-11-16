@@ -39,6 +39,9 @@ public class OrderController {
         setPriceText();
     }
 
+    /**
+     * clears the order
+     */
     public void clear(){
         while(copyOrder.getOrderLines().size() != 0){
             copyOrder.remove(0);
@@ -47,6 +50,9 @@ public class OrderController {
         setPriceText();
     }
 
+    /**
+     * adds a duplicate selected sandwich to the order.
+     */
     public void addSameOrderLine(){
         if(orderView.getSelectionModel().getSelectedIndex() == -1){
             return;
@@ -59,6 +65,9 @@ public class OrderController {
         setPriceText();
     }
 
+    /**
+     * Removes a selected sandwich from the order
+     */
     public void removeOrderLine(){
         copyOrder.remove( orderView.getSelectionModel().getSelectedIndex() );
         orderView.getItems().clear();
@@ -70,6 +79,9 @@ public class OrderController {
         setPriceText();
     }
 
+    /**
+     * Sets the price total in the bottom right to represent the total sum of all the sandwich prices on the order.
+     */
     public void setPriceText(){
         double total = 0;
         for(OrderLine line : orderlines){
