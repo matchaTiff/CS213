@@ -24,21 +24,21 @@ public class OrderController {
     @FXML private TextField totalPrice;
 
     private Order copyOrder = new Order();
-    //@FXML private ListView allOrders;
-
-
     private ArrayList<OrderLine> orderlines;
 
+    /**
+     * Get the order details from the main controller and make a copy to second controller
+     * @param controller from main controller
+     */
     public void getOrder(Controller controller) {
         copyOrder = controller.returnOrder();
-        //System.out.println(copyOrder.getOrderLines().toString());
         orderlines = copyOrder.getOrderLines();
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
         }
         setPriceText();
     }
-
+    
     public void clear(){
         while(copyOrder.getOrderLines().size() != 0){
             copyOrder.remove(0);
@@ -62,7 +62,6 @@ public class OrderController {
     public void removeOrderLine(){
         copyOrder.remove( orderView.getSelectionModel().getSelectedIndex() );
         orderView.getItems().clear();
-        //orderView.getItems().addAll( copyOrder.getOrderLines() );
 
         for(OrderLine line : orderlines) {
             orderView.getItems().add(line);
@@ -78,6 +77,9 @@ public class OrderController {
         totalPrice.setText( String.format("%.2f", total ) );
     }
 
+    /**
+     * Close second stage when back button is pressed
+     */
     public void backButtonPressed() {
         Stage stage = (Stage) backButton.getScene().getWindow();
         stage.close();

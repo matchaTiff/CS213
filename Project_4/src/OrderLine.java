@@ -56,7 +56,7 @@ public class OrderLine {
      */
     @Override
     public String toString() {
-        return lineNumber + " " + sandwich.toString() + " Price $" + getPrice();
+        return lineNumber + " " + sandwich.toString() + " Price $" + String.format("%.2f", getPrice());
     }
     
 }
