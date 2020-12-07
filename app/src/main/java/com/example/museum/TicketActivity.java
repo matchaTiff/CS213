@@ -14,7 +14,11 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
+
 public class TicketActivity extends AppCompatActivity {
+
+    NumberFormat formatter = NumberFormat.getCurrencyInstance();
 
     String url;
 
@@ -104,9 +108,9 @@ public class TicketActivity extends AppCompatActivity {
 
 
         // Sets the values for the price fields
-        adultPrice.setText("$" + Double.toString(adultTicketPrice) + "0");
-        seniorPrice.setText("$" + Double.toString(seniorTicketPrice) + "0");
-        studentPrice.setText("$" + Double.toString(studentTicketPrice) + "0");
+        adultPrice.setText( formatter.format(adultTicketPrice) );
+        seniorPrice.setText( formatter.format(seniorTicketPrice) );
+        studentPrice.setText( formatter.format(studentTicketPrice) );
 
         // create a back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -138,14 +142,13 @@ public class TicketActivity extends AppCompatActivity {
         double finalTicketTotal = finalTicketPrice + salesTaxPrice;
 
         // Rounds the prices to the nearest cent
-        finalTicketPrice = Math.round( finalTicketPrice * 100 ) / 100;
-        salesTaxPrice = Math.round( salesTaxPrice * 100 ) / 100;
-        finalTicketTotal = Math.round( finalTicketTotal * 100 ) / 100;
+
+
 
         //Sets the text
-        ticketPriceField.setText( "$" + Double.toString(finalTicketPrice) + "0" );
-        salesTaxField.setText( "$" + Double.toString(salesTaxPrice) + "0" );
-        ticketTotalField.setText( "$" + Double.toString(finalTicketTotal) + "0" );
+        ticketPriceField.setText( formatter.format(finalTicketPrice) );
+        salesTaxField.setText( formatter.format(salesTaxPrice) );
+        ticketTotalField.setText( formatter.format(finalTicketTotal) );
 
     }
 
