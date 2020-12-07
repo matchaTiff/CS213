@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         // what activity intends to do
         Button b = (Button)v;
         String buttonText = b.getText().toString();
-        int buttonPressed =0;
+        int buttonPressed = 0;
 
         if (buttonText.equalsIgnoreCase("THE MUSEUM OF MODERN ART")){
             buttonPressed = 1;
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             buttonPressed = 0;
         }
 
-        //System.out.println(buttonText);
         Intent i = new Intent(this,TicketActivity.class);
         i.putExtra("PressedButton", Integer.toString(buttonPressed));
         startActivity(i);
