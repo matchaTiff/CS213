@@ -44,31 +44,11 @@ public class TicketActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "Maximum of 5 tickets for each!" , Toast.LENGTH_LONG).show();
     }
 
-    public void onClickMuseumImageOne(View v) {
+    public void onClickMuseumImage(View v) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
 
     }
 
-    public void onClickMuseumImageTwo(View v) {
-
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
-
-    }
-
-    public void onClickMuseumImageThree(View v) {
-
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
-
-    }
-
-    public void onClickMuseumImageFour(View v) {
-
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-        startActivity(intent);
-
-    }
 
 }
