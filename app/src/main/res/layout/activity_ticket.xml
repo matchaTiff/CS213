@@ -19,8 +19,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+
+
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/museumName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Placeholder"
@@ -43,17 +45,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/ticket1"
                 android:layout_width="168dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="adult"
+                android:text="@string/ticket1"
                 android:textAlignment="textEnd"
                 android:textColor="#5C00FF"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/adultPrice"
                 android:layout_width="139dp"
                 android:layout_height="20dp"
                 android:paddingLeft="20dp"
@@ -65,7 +67,8 @@
                 android:id="@+id/spinner"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:entries="@array/spinner" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,17 +77,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/ticket2"
                 android:layout_width="168dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="senior"
+                android:text="@string/ticket2"
                 android:textAlignment="textEnd"
                 android:textColor="#5C00FF"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/seniorPrice"
                 android:layout_width="139dp"
                 android:layout_height="20dp"
                 android:paddingLeft="20dp"
@@ -96,7 +99,8 @@
                 android:id="@+id/spinner2"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:entries="@array/spinner" />
 
         </LinearLayout>
 
@@ -106,17 +110,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/ticket3"
                 android:layout_width="168dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="student"
+                android:text="@string/ticket3"
                 android:textAlignment="textEnd"
                 android:textColor="#5C00FF"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/studentPrice"
                 android:layout_width="139dp"
                 android:layout_height="20dp"
                 android:paddingLeft="20dp"
@@ -128,65 +132,50 @@
                 android:id="@+id/spinner3"
                 android:layout_width="128dp"
                 android:layout_height="20dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:entries="@array/spinner" />
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/calculateButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="CALCULATE TICKET PRICE" />
+            android:onClick="onClickCalculationButton"
+            android:text="@string/calculateButton" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/ticketPriceField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
+            android:focusable="false"
             android:inputType="textPersonName"
             android:text="ticket price"
             android:textColor="#979797" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/salesTaxField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:focusable="false"
             android:inputType="textPersonName"
             android:text="sales tax"
             android:textColor="#979797" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/ticketTotalField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:focusable="false"
             android:inputType="textPersonName"
             android:text="ticket total"
             android:textColor="#979797" />
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/museumImage"
-        android:layout_width="304dp"
-        android:layout_height="264dp"
-        android:onClick="onClickMuseumImage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/museumName"
-        tools:src="@tools:sample/backgrounds/scenic" />
-
-    <TextView
-        android:id="@+id/museumName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="TextView"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
