@@ -141,10 +141,6 @@ public class TicketActivity extends AppCompatActivity {
         double salesTaxPrice = finalTicketPrice * (salesTax/100);
         double finalTicketTotal = finalTicketPrice + salesTaxPrice;
 
-        // Rounds the prices to the nearest cent
-
-
-
         //Sets the text
         ticketPriceField.setText( formatter.format(finalTicketPrice) );
         salesTaxField.setText( formatter.format(salesTaxPrice) );
