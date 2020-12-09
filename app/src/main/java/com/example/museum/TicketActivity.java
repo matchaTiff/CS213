@@ -16,6 +16,13 @@ import org.w3c.dom.Text;
 
 import java.text.NumberFormat;
 
+/**
+ * Class that controls the TicketActivity of the Museum app. Mainly initializes the price of
+ * the text areas, populates the spinner, and change the image of the museum based on what
+ * button was clicked from the main activity.
+ *
+ * @author Seth Santos, Tiffany Chen
+ */
 public class TicketActivity extends AppCompatActivity {
 
     NumberFormat formatter = NumberFormat.getCurrencyInstance();
@@ -48,6 +55,13 @@ public class TicketActivity extends AppCompatActivity {
     final double[] WHITNEY_MUSEUM_OF_AMERICAN_ART_TICKETS = new double[] {25.00, 18.00, 18.00};
     final double[] AMERICAN_MUSEUM_OF_NATURAL_HISTORY_TICKETS = new double[] {23.00, 18.00, 18.00};
 
+    /**
+     * Sets museum images and ticket prices based on what museum was clicked.
+     * Creates back button and toast.
+     * Saves instance state so information is not lost.
+     *
+     * @param savedInstanceState of ticket activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,11 +133,19 @@ public class TicketActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), R.string.toast, Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * Opens browser to the specified museum whose image was clicked.
+     * @param v view of TicketActivity
+     */
     public void onClickMuseumImage(View v) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
 
+    /**
+     * Calculates the sales tax, total ticket price, and total ticket total when button is pressed.
+     * @param v view of TicketActivity
+     */
     public void onClickCalculationButton(View v){
 
         // Stores the amount of tickets selected for each type of ticket

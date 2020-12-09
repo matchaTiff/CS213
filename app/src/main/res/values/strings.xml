@@ -12,6 +12,9 @@
     <string name="ticketField">Ticket Price</string>
     <string name="taxField">Sales Tax</string>
     <string name="totalField">Ticket Total</string>
+    <string name="museum_tickets">Museum Tickets</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="picture_of_museum">picture of museum</string>
 
     <string-array name="spinner">
         <item>0</item>

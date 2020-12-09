@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="24dp"
-            android:text="Museum Tickets"
+            android:text="@string/museum_tickets"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="36sp"
@@ -35,28 +35,28 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:onClick="museumClicked"
-            android:text="The Museum of Modern Art" />
+            android:text="@string/museum1" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:onClick="museumClicked"
-            android:text="Metropolitan Museum of Art" />
+            android:text="@string/museum2" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:onClick="museumClicked"
-            android:text="Whitney Museum of American Art" />
+            android:text="@string/museum3" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:onClick="museumClicked"
-            android:text="American Museum of Natural History" />
+            android:text="@string/museum4" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
